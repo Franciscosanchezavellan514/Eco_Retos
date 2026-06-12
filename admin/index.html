@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco-Retos | Admin</title>
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../mainContainer.css">
+    <link rel="stylesheet" href="./table.css">
+    <link rel="stylesheet" href="./admin.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="app-wrapper">
+
+    <div class="phone-frame">
+
+        <div class="phone-screen">
+
+            <header class="screen-header">
+
+                <a href="../index.html" class="back-btn">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+
+                <p class="page-subtitle">Panel de seguimiento</p>
+
+                <h1 class="page-title">
+                    Administración
+                </h1>
+
+            </header>
+
+            <main class="screen-content">
+
+                <section class="admin-stats">
+
+                    <article class="admin-card">
+                        <i class="fa-solid fa-users"></i>
+                        <div>
+                            <span>Usuarios</span>
+                            <strong id="totalUsers">1</strong>
+                        </div>
+                    </article>
+
+                    <article class="admin-card">
+                        <i class="fa-solid fa-recycle"></i>
+                        <div>
+                            <span>Retos completados</span>
+                            <strong id="totalChallenges">0</strong>
+                        </div>
+                    </article>
+
+                    <article class="admin-card">
+                        <i class="fa-solid fa-star"></i>
+                        <div>
+                            <span>Puntos generados</span>
+                            <strong id="totalPoints">0</strong>
+                        </div>
+                    </article>
+
+                    <article class="admin-card">
+                        <i class="fa-solid fa-message"></i>
+                        <div>
+                            <span>Publicaciones</span>
+                            <strong id="totalPosts">0</strong>
+                        </div>
+                    </article>
+
+                </section>
+
+                <section class="card admin-section">
+
+                    <div class="section-title">
+                        <h3>Usuario registrado</h3>
+                    </div>
+
+                    <div id="userTable"></div>
+
+                </section>
+
+                <section class="card admin-section">
+
+                    <div class="section-title">
+                        <h3>Actividad del muro</h3>
+                    </div>
+
+                    <div id="postsTable"></div>
+
+                </section>
+
+                <button class="danger-btn" id="clearDataBtn">
+                    <i class="fa-solid fa-trash"></i>
+                    Reiniciar datos del prototipo
+                </button>
+
+            </main>
+
+        </div>
+
+        <nav class="bottom-nav">
+
+            <a href="../index.html">
+                <i class="fa-solid fa-house"></i>
+                Inicio
+            </a>
+
+            <a href="./retos/retos.html">
+                <i class="fa-solid fa-recycle"></i>
+                Retos
+            </a>
+
+            <a href="./trivia/trivia.html">
+                <i class="fa-solid fa-circle-question"></i>
+                Trivia
+            </a>
+
+            <a href="./muro/muro.html">
+                <i class="fa-solid fa-message"></i>
+                Muro
+            </a>
+
+            <a href="./perfil/perfil.html">
+                <i class="fa-solid fa-user"></i>
+                Perfil
+            </a>
+
+        </nav>
+
+    </div>
+
+</div>
+
+<script src="../auth.js"></script>
+<script src="./table.js"></script>
+<script src="./admin.js"></script>
+
+</body>
+</html>
