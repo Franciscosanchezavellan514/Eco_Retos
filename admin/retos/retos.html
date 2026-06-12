@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco-Retos | Retos</title>
+
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../mainContainer.css">
+    <link rel="stylesheet" href="./retos.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="app-wrapper">
+
+    <div class="phone-frame">
+
+        <div class="phone-screen">
+
+            <header class="screen-header">
+
+                <a href="../../index.html" class="back-btn">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+
+                <p class="page-subtitle">Actividades disponibles</p>
+
+                <h1 class="page-title">
+                    Retos Eco
+                </h1>
+
+            </header>
+
+            <main class="screen-content">
+
+                <section class="resume-card card">
+
+                    <div>
+                        <span class="resume-label">Puntos actuales</span>
+                        <strong id="currentPoints">0</strong>
+                    </div>
+
+                    <div>
+                        <span class="resume-label">Retos completados</span>
+                        <strong id="currentChallenges">0</strong>
+                    </div>
+
+                </section>
+
+                <section class="filter-box">
+
+                    <button class="filter-btn active" data-filter="todos">
+                        Todos
+                    </button>
+
+                    <button class="filter-btn" data-filter="facil">
+                        Fácil
+                    </button>
+
+                    <button class="filter-btn" data-filter="medio">
+                        Medio
+                    </button>
+
+                    <button class="filter-btn" data-filter="dificil">
+                        Difícil
+                    </button>
+
+                </section>
+
+                <section class="challenge-list" id="challengeList">
+
+                </section>
+
+            </main>
+
+        </div>
+
+        <nav class="bottom-nav">
+
+            <a href="../../index.html">
+                <i class="fa-solid fa-house"></i>
+                Inicio
+            </a>
+
+            <a href="./retos.html" class="active">
+                <i class="fa-solid fa-recycle"></i>
+                Retos
+            </a>
+
+            <a href="../trivia/trivia.html">
+                <i class="fa-solid fa-circle-question"></i>
+                Trivia
+            </a>
+
+            <a href="../muro/muro.html">
+                <i class="fa-solid fa-message"></i>
+                Muro
+            </a>
+
+            <a href="../perfil/perfil.html">
+                <i class="fa-solid fa-user"></i>
+                Perfil
+            </a>
+
+        </nav>
+
+    </div>
+
+</div>
+
+<script src="../../auth.js"></script>
+<script src="./retos.js"></script>
+
+</body>
+</html>

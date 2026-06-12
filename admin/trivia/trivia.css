@@ -1,0 +1,159 @@
+.back-btn {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+    background: rgba(255,255,255,.16);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    margin-bottom: 0.8rem;
+}
+
+.trivia-card {
+    margin-bottom: 1rem;
+}
+
+.trivia-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 0.8rem;
+}
+
+.trivia-top span {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.trivia-top strong {
+    background: var(--green-soft);
+    color: var(--green-main);
+    padding: 0.3rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 0.45rem;
+    background: #e3ece3;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 1.2rem;
+}
+
+#progressFill {
+    width: 20%;
+    height: 100%;
+    background: var(--green-main);
+    border-radius: 999px;
+    transition: 0.3s ease;
+}
+
+#questionText {
+    font-size: 1rem;
+    color: var(--green-dark);
+    line-height: 1.35;
+    margin-bottom: 1rem;
+}
+
+.options-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.option-btn {
+    width: 100%;
+    min-height: 3.2rem;
+
+    background: white;
+    border: 1px solid #dcebdc;
+    border-radius: var(--radius-sm);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0.8rem;
+    text-align: left;
+
+    color: var(--green-dark);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.option-btn i {
+    color: #aab4aa;
+}
+
+.option-btn.correct {
+    border-color: var(--green-main);
+    background: #e9f8ec;
+    color: var(--green-main);
+}
+
+.option-btn.wrong {
+    border-color: var(--danger);
+    background: #ffeaea;
+    color: var(--danger);
+}
+
+.option-btn:disabled {
+    opacity: 0.85;
+    cursor: not-allowed;
+}
+
+.result-box {
+    text-align: center;
+}
+
+.result-icon {
+    width: 4.5rem;
+    height: 4.5rem;
+
+    margin: 0 auto 1rem;
+
+    border-radius: 50%;
+    background: var(--green-soft);
+    color: var(--green-main);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 2rem;
+}
+
+.result-box h2 {
+    color: var(--green-dark);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.result-box p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+}
+
+.result-box strong {
+    color: var(--green-main);
+}
+
+@media (max-width: 320px) {
+    #questionText {
+        font-size: 0.92rem;
+    }
+
+    .option-btn {
+        font-size: 0.73rem;
+        padding: 0.7rem;
+    }
+}

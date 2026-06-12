@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco-Retos | Trivia</title>
+
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../mainContainer.css">
+    <link rel="stylesheet" href="./trivia.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="app-wrapper">
+
+    <div class="phone-frame">
+
+        <div class="phone-screen">
+
+            <header class="screen-header">
+
+                <a href="../../index.html" class="back-btn">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+
+                <p class="page-subtitle">Pon a prueba tus conocimientos</p>
+
+                <h1 class="page-title">
+                    Trivia Eco
+                </h1>
+
+            </header>
+
+            <main class="screen-content">
+
+                <section class="trivia-card card">
+
+                    <div class="trivia-top">
+                        <span id="questionNumber">Pregunta 1 de 5</span>
+                        <strong>+20 pts</strong>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div id="progressFill"></div>
+                    </div>
+
+                    <h2 id="questionText">
+                        Cargando pregunta...
+                    </h2>
+
+                    <div id="optionsBox" class="options-box"></div>
+
+                </section>
+
+                <section id="resultBox" class="result-box card hidden">
+
+                    <div class="result-icon">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+
+                    <h2>Trivia completada</h2>
+
+                    <p>
+                        Obtuviste <strong id="scoreText">0</strong> puntos.
+                    </p>
+
+                    <button class="btn-primary" id="restartBtn">
+                        Repetir trivia
+                    </button>
+
+                </section>
+
+            </main>
+
+        </div>
+
+        <nav class="bottom-nav">
+
+            <a href="../../index.html">
+                <i class="fa-solid fa-house"></i>
+                Inicio
+            </a>
+
+            <a href="../retos/retos.html">
+                <i class="fa-solid fa-recycle"></i>
+                Retos
+            </a>
+
+            <a href="./trivia.html" class="active">
+                <i class="fa-solid fa-circle-question"></i>
+                Trivia
+            </a>
+
+            <a href="../muro/muro.html">
+                <i class="fa-solid fa-message"></i>
+                Muro
+            </a>
+
+            <a href="../perfil/perfil.html">
+                <i class="fa-solid fa-user"></i>
+                Perfil
+            </a>
+
+        </nav>
+
+    </div>
+
+</div>
+
+<script src="../../auth.js"></script>
+<script src="./trivia.js"></script>
+
+</body>
+</html>

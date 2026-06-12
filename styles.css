@@ -1,0 +1,166 @@
+.user-card {
+    margin-bottom: 1rem;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.user-avatar {
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    background: var(--green-soft);
+    color: var(--green-main);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.3rem;
+}
+
+.user-info h2 {
+    font-size: 1rem;
+    color: var(--green-dark);
+}
+
+.user-info p {
+    font-size: 0.72rem;
+    color: var(--muted);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.65rem;
+}
+
+.stat-box {
+    background: var(--green-soft);
+    border-radius: var(--radius-sm);
+    padding: 0.65rem 0.3rem;
+    text-align: center;
+}
+
+.stat-box strong {
+    display: block;
+    font-size: 1.05rem;
+    color: var(--green-main);
+}
+
+.stat-box span {
+    font-size: 0.65rem;
+    color: var(--muted);
+}
+
+.garden-card {
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.section-title h3 {
+    font-size: 1rem;
+    color: var(--green-dark);
+}
+
+.section-title span {
+    background: var(--green-soft);
+    color: var(--green-main);
+    padding: 0.25rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.garden-preview {
+    height: 6.5rem;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, #e7f6e9, #ccefd0);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    color: var(--green-main);
+    font-size: 2rem;
+
+    margin-bottom: 0.8rem;
+}
+
+.garden-card p {
+    font-size: 0.75rem;
+    color: var(--muted);
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+}
+
+.menu-card {
+    min-height: 5.7rem;
+    background: var(--white);
+    border: 1px solid #dcebdc;
+    border-radius: var(--radius-md);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.55rem;
+
+    color: var(--green-dark);
+    font-weight: 700;
+    font-size: 0.78rem;
+
+    box-shadow: 0 4px 14px rgba(30, 90, 35, 0.06);
+}
+
+.menu-card i {
+    color: var(--green-main);
+    font-size: 1.45rem;
+}
+
+.logout-btn {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.85rem 1rem;
+
+    background: #ffeaea;
+    color: var(--danger);
+    border-radius: 999px;
+
+    font-weight: 700;
+}
+
+.logout-btn i {
+    margin-right: 0.35rem;
+}
+
+@media (max-width: 320px) {
+    .screen-content {
+        padding: 0.75rem;
+        padding-bottom: 5rem;
+    }
+
+    .menu-card {
+        min-height: 5rem;
+        font-size: 0.72rem;
+    }
+
+    .garden-preview {
+        height: 5.5rem;
+    }
+}

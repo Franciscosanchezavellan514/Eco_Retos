@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco-Retos | Inicio</title>
+
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./mainContainer.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="app-wrapper">
+
+    <div class="phone-frame">
+
+        <div class="phone-screen">
+
+            <header class="screen-header">
+
+                <p class="page-subtitle">Bienvenido a</p>
+
+                <h1 class="page-title">
+                    Mi EcoPanel
+                </h1>
+
+            </header>
+
+            <main class="screen-content">
+
+                <section class="user-card card">
+
+                    <div class="user-info">
+
+                        <div class="user-avatar">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+
+                        <div>
+                            <h2 id="userName">Estudiante Eco</h2>
+                            <p id="userEmail">correo@ejemplo.com</p>
+                        </div>
+
+                    </div>
+
+                    <div class="stats-grid">
+
+                        <div class="stat-box">
+                            <strong id="userPoints">0</strong>
+                            <span>Puntos</span>
+                        </div>
+
+                        <div class="stat-box">
+                            <strong id="userLevel">1</strong>
+                            <span>Nivel</span>
+                        </div>
+
+                        <div class="stat-box">
+                            <strong id="userChallenges">0</strong>
+                            <span>Retos</span>
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <section class="garden-card card">
+
+                    <div class="section-title">
+
+                        <h3>Jardín virtual</h3>
+                        <span id="gardenLevel">Nivel 1</span>
+
+                    </div>
+
+                    <div class="garden-preview">
+
+                        <i class="fa-solid fa-seedling"></i>
+                        <i class="fa-solid fa-leaf"></i>
+                        <i class="fa-solid fa-tree"></i>
+
+                    </div>
+
+                    <p id="gardenText">
+                        Completa retos para hacer crecer tu jardín.
+                    </p>
+
+                </section>
+
+                <section class="menu-grid">
+
+                    <a href="./admin/retos/retos.html" class="menu-card">
+                        <i class="fa-solid fa-recycle"></i>
+                        <span>Retos Eco</span>
+                    </a>
+
+                    <a href="./admin/trivia/trivia.html" class="menu-card">
+                        <i class="fa-solid fa-circle-question"></i>
+                        <span>Trivia Eco</span>
+                    </a>
+
+                    <a href="./admin/muro/muro.html" class="menu-card">
+                        <i class="fa-solid fa-message"></i>
+                        <span>Muro Eco</span>
+                    </a>
+
+                    <a href="./admin/coleccion/coleccion.html" class="menu-card">
+                        <i class="fa-solid fa-medal"></i>
+                        <span>Mi colección</span>
+                    </a>
+
+                    <a href="./admin/perfil/perfil.html" class="menu-card">
+                        <i class="fa-solid fa-user-gear"></i>
+                        <span>Perfil</span>
+                    </a>
+
+                    <a href="./admin/index.html" class="menu-card">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <span>Admin</span>
+                    </a>
+
+                </section>
+
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Cerrar sesión
+                </button>
+
+            </main>
+
+        </div>
+
+        <nav class="bottom-nav">
+
+            <a href="./index.html" class="active">
+                <i class="fa-solid fa-house"></i>
+                Inicio
+            </a>
+
+            <a href="./admin/retos/retos.html">
+                <i class="fa-solid fa-recycle"></i>
+                Retos
+            </a>
+
+            <a href="./admin/trivia/trivia.html">
+                <i class="fa-solid fa-circle-question"></i>
+                Trivia
+            </a>
+
+            <a href="./admin/muro/muro.html">
+                <i class="fa-solid fa-message"></i>
+                Muro
+            </a>
+
+            <a href="./admin/perfil/perfil.html">
+                <i class="fa-solid fa-user"></i>
+                Perfil
+            </a>
+
+        </nav>
+
+    </div>
+
+</div>
+
+<script src="./auth.js"></script>
+<script src="./scripts.js"></script>
+
+</body>
+</html>

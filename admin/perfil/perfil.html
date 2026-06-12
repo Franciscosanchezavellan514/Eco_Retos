@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco-Retos | Perfil</title>
+
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../mainContainer.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="app-wrapper">
+    <div class="phone-frame">
+        <div class="phone-screen">
+
+            <header class="screen-header">
+                <a href="../../index.html" class="back-auth">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+
+                <p class="page-subtitle">Cuenta del usuario</p>
+                <h1 class="page-title">Perfil</h1>
+            </header>
+
+            <main class="screen-content">
+
+                <section class="card text-center">
+                    <div class="user-avatar" style="margin:auto; margin-bottom: 12px;">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <h2 id="profileName">Estudiante Eco</h2>
+                    <p id="profileEmail" class="text-muted text-small">correo@ejemplo.com</p>
+                </section>
+
+                <section class="card">
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <strong id="profilePoints">0</strong>
+                            <span>Puntos</span>
+                        </div>
+
+                        <div class="stat-box">
+                            <strong id="profileLevel">1</strong>
+                            <span>Nivel</span>
+                        </div>
+
+                        <div class="stat-box">
+                            <strong id="profileChallenges">0</strong>
+                            <span>Retos</span>
+                        </div>
+                    </div>
+                </section>
+
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Cerrar sesión
+                </button>
+
+            </main>
+
+        </div>
+
+        <nav class="bottom-nav">
+
+            <a href="../../index.html">
+                <i class="fa-solid fa-house"></i>
+                Inicio
+            </a>
+
+            <a href="../retos/retos.html">
+                <i class="fa-solid fa-recycle"></i>
+                Retos
+            </a>
+
+            <a href="../trivia/trivia.html">
+                <i class="fa-solid fa-circle-question"></i>
+                Trivia
+            </a>
+
+            <a href="../muro/muro.html">
+                <i class="fa-solid fa-message"></i>
+                Muro
+            </a>
+
+            <a href="./perfil.html" class="active">
+                <i class="fa-solid fa-user"></i>
+                Perfil
+            </a>
+
+        </nav>
+
+    </div>
+</div>
+
+<script src="../../auth.js"></script>
+<script src="./perfil.js"></script>
+
+</body>
+</html>
