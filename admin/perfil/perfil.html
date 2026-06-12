@@ -1,101 +1,156 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eco-Retos | Perfil</title>
 
-    <link rel="stylesheet" href="../../styles.css">
-    <link rel="stylesheet" href="../../mainContainer.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<title>Eco-Retos | Perfil</title>
+
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../mainContainer.css">
+<link rel="stylesheet" href="./perfil.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 </head>
 
 <body>
 
 <div class="app-wrapper">
-    <div class="phone-frame">
-        <div class="phone-screen">
 
-            <header class="screen-header">
-                <a href="../../index.html" class="back-auth">
-                    <i class="fa-solid fa-arrow-left"></i>
-                </a>
+<div class="phone-frame">
 
-                <p class="page-subtitle">Cuenta del usuario</p>
-                <h1 class="page-title">Perfil</h1>
-            </header>
+<div class="phone-screen">
 
-            <main class="screen-content">
+<header class="screen-header">
 
-                <section class="card text-center">
-                    <div class="user-avatar" style="margin:auto; margin-bottom: 12px;">
-                        <i class="fa-solid fa-user"></i>
-                    </div>
+<a href="../../index.html" class="back-btn">
+<i class="fa-solid fa-arrow-left"></i>
+</a>
 
-                    <h2 id="profileName">Estudiante Eco</h2>
-                    <p id="profileEmail" class="text-muted text-small">correo@ejemplo.com</p>
-                </section>
+<p class="page-subtitle">
+Información del usuario
+</p>
 
-                <section class="card">
-                    <div class="stats-grid">
-                        <div class="stat-box">
-                            <strong id="profilePoints">0</strong>
-                            <span>Puntos</span>
-                        </div>
+<h1 class="page-title">
+Mi Perfil
+</h1>
 
-                        <div class="stat-box">
-                            <strong id="profileLevel">1</strong>
-                            <span>Nivel</span>
-                        </div>
+</header>
 
-                        <div class="stat-box">
-                            <strong id="profileChallenges">0</strong>
-                            <span>Retos</span>
-                        </div>
-                    </div>
-                </section>
+<main class="screen-content">
 
-                <button class="logout-btn" id="logoutBtn">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                    Cerrar sesión
-                </button>
+<section class="profile-card">
 
-            </main>
+<div class="profile-avatar">
+<i class="fa-solid fa-user"></i>
+</div>
 
-        </div>
+<h2 id="profileName">
+Usuario
+</h2>
 
-        <nav class="bottom-nav">
+<p id="profileEmail">
+correo@ejemplo.com
+</p>
 
-            <a href="../../index.html">
-                <i class="fa-solid fa-house"></i>
-                Inicio
-            </a>
+</section>
 
-            <a href="../retos/retos.html">
-                <i class="fa-solid fa-recycle"></i>
-                Retos
-            </a>
+<section class="profile-stats">
 
-            <a href="../trivia/trivia.html">
-                <i class="fa-solid fa-circle-question"></i>
-                Trivia
-            </a>
+<div class="stat-item">
+<span>Nivel</span>
+<strong id="profileLevel">1</strong>
+</div>
 
-            <a href="../muro/muro.html">
-                <i class="fa-solid fa-message"></i>
-                Muro
-            </a>
+<div class="stat-item">
+<span>Puntos</span>
+<strong id="profilePoints">0</strong>
+</div>
 
-            <a href="./perfil.html" class="active">
-                <i class="fa-solid fa-user"></i>
-                Perfil
-            </a>
+<div class="stat-item">
+<span>Retos</span>
+<strong id="profileChallenges">0</strong>
+</div>
 
-        </nav>
+<div class="stat-item">
+<span>Racha</span>
+<strong id="profileStreak">0</strong>
+</div>
 
-    </div>
+</section>
+
+<section class="card">
+
+<div class="progress-header">
+
+<span>Progreso de nivel</span>
+
+<strong id="nextLevelText">
+Nivel 2
+</strong>
+
+</div>
+
+<div class="progress-bar-profile">
+
+<div id="levelProgress"></div>
+
+</div>
+
+<p id="progressDescription">
+Continúa participando para subir de nivel.
+</p>
+
+</section>
+
+<button
+class="logout-btn"
+id="logoutBtn">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Cerrar sesión
+
+</button>
+
+</main>
+
+</div>
+
+<nav class="bottom-nav">
+
+<a href="../../index.html">
+<i class="fa-solid fa-house"></i>
+Inicio
+</a>
+
+<a href="../retos/retos.html">
+<i class="fa-solid fa-recycle"></i>
+Retos
+</a>
+
+<a href="../trivia/trivia.html">
+<i class="fa-solid fa-circle-question"></i>
+Trivia
+</a>
+
+<a href="../muro/muro.html">
+<i class="fa-solid fa-message"></i>
+Muro
+</a>
+
+<a href="./perfil.html" class="active">
+<i class="fa-solid fa-user"></i>
+Perfil
+</a>
+
+</nav>
+
+</div>
+
 </div>
 
 <script src="../../auth.js"></script>
