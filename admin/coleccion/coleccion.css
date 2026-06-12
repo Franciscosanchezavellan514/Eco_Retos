@@ -132,4 +132,14 @@
     .badge-card p {
         font-size: 0.62rem;
     }
+
+    .badge-icon {
+    overflow: hidden;
+    }
+
+    .badge-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    }
 }
