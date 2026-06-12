@@ -24,6 +24,9 @@ document.getElementById("gardenLevel");
 const gardenText =
 document.getElementById("gardenText");
 
+const gardenImage =
+document.getElementById("gardenImage");
+
 const logoutBtn =
 document.getElementById("logoutBtn");
 
@@ -47,22 +50,27 @@ if(user){
     gardenLevel.textContent =
     "Nivel " + (user.nivel || 1);
 
-    if((user.puntos || 0) >= 800){
+    if ((user.puntos || 0) >= 800) {
 
-        gardenText.textContent =
-        "Tu jardín está avanzado. Sigue acumulando logros.";
+    gardenImage.src = "./imagen/Large_eco_garden_with_trees,_202606112042.jpeg";
 
-    }else if((user.puntos || 0) >= 300){
+    gardenText.textContent =
+    "Tu jardín está completamente desarrollado.";
 
-        gardenText.textContent =
-        "Tu jardín está creciendo con tus acciones ambientales.";
+} else if ((user.puntos || 0) >= 300) {
 
-    }else{
+    gardenImage.src = "./imagen/Medium_eco_garden_with_flowers,_202606112041.jpeg";
 
-        gardenText.textContent =
-        "Completa retos para hacer crecer tu jardín.";
+    gardenText.textContent =
+    "Tu jardín sigue creciendo con tus acciones ambientales.";
 
-    }
+} else {
+
+    gardenImage.src = "./imagen/Small_eco_garden_with_one_202606112040.jpeg";
+
+    gardenText.textContent =
+    "Completa retos para hacer crecer tu jardín.";
+}
 
 }
 

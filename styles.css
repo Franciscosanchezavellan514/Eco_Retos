@@ -83,14 +83,7 @@
 }
 
 .garden-preview {
-    height: 6.5rem;
-    border-radius: var(--radius-md);
-    background: linear-gradient(135deg, #e7f6e9, #ccefd0);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     overflow: hidden;
-    margin-bottom: 0.8rem;
 }
 
 .garden-preview img {
