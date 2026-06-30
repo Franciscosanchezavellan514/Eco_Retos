@@ -35,21 +35,29 @@ function getLoginPath() {
     const path = window.location.pathname;
 
     if (path.includes("/admin/")) {
-        return "../../auth/login.html";
+        return "../../auth/login/login.html";
     }
 
-    if (path.includes("/auth/")) {
+    if (path.includes("/auth/login/")) {
         return "./login.html";
     }
 
-    return "./auth/login.html";
+    if (path.includes("/auth/signup/")) {
+        return "../login/login.html";
+    }
+
+    return "./auth/login/login.html";
 }
 
 function getHomePath() {
     const path = window.location.pathname;
 
-    if (path.includes("/auth/")) {
-        return "../index.html";
+    if (path.includes("/auth/login/")) {
+        return "../../index.html";
+    }
+
+    if (path.includes("/auth/signup/")) {
+        return "../../index.html";
     }
 
     if (path.includes("/admin/")) {
@@ -67,7 +75,7 @@ function protectPage() {
 
 function protectRootPage() {
     if (!getAuthStatus()) {
-        window.location.href = "./auth/login.html";
+        window.location.href = "./auth/login/login.html";
     }
 }
 

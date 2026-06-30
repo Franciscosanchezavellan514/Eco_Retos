@@ -1,0 +1,83 @@
+.back-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.16);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin-bottom: 0.8rem;
+}
+
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.admin-card {
+  background: white;
+  border: 1px solid #dcebdc;
+  border-radius: var(--radius-md);
+  padding: 0.85rem;
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  box-shadow: 0 4px 14px rgba(30, 90, 35, 0.06);
+}
+
+.admin-card i {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 14px;
+  background: var(--green-soft);
+  color: var(--green-main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-card span {
+  display: block;
+  font-size: 0.64rem;
+  color: var(--muted);
+  line-height: 1.2;
+}
+
+.admin-card strong {
+  font-size: 1rem;
+  color: var(--green-dark);
+}
+
+.admin-section {
+  margin-bottom: 1rem;
+}
+
+.danger-btn {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 999px;
+  background: #ffeaea;
+  color: var(--danger);
+  font-weight: 800;
+}
+
+.danger-btn i {
+  margin-right: 0.3rem;
+}
+
+@media (max-width: 320px) {
+  .admin-stats {
+    gap: 0.55rem;
+  }
+
+  .admin-card {
+    padding: 0.7rem;
+  }
+
+  .admin-card span {
+    font-size: 0.58rem;
+  }
+}

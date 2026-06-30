@@ -11,7 +11,7 @@ const badges = [
         id: 1,
         name: "Primer reto",
         description: "Completa tu primer reto ecológico.",
-        image: "../../imagen/Bronze_environmental_achievement_badge,_eco_202606112043.jpeg",
+        image: "../../assets/images/Bronze_environmental_achievement_badge,_eco_202606112043.jpeg",
         condition: function(user) {
             return (user.retos || 0) >= 1;
         }
@@ -20,7 +20,7 @@ const badges = [
         id: 2,
         name: "Eco aprendiz",
         description: "Alcanza 50 puntos en la plataforma.",
-        image: "../../imagen/Silver_environmental_achievement_badge,_eco_202606112044.jpeg",
+        image: "../../assets/images/Silver_environmental_achievement_badge,_eco_202606112044.jpeg",
         condition: function(user) {
             return (user.puntos || 0) >= 50;
         }
@@ -29,7 +29,7 @@ const badges = [
         id: 3,
         name: "Reciclador activo",
         description: "Completa al menos 3 retos.",
-        image: "../../imagen/Gold_environmental_achievement_badge,_eco_202606112045.jpeg",
+        image: "../../assets/images/Gold_environmental_achievement_badge,_eco_202606112045.jpeg",
         condition: function(user) {
             return (user.retos || 0) >= 3;
         }
@@ -38,7 +38,7 @@ const badges = [
         id: 4,
         name: "Guardián del agua",
         description: "Alcanza 100 puntos acumulados.",
-        image: "../../imagen/Silver_environmental_achievement_badge,_eco_202606112044.jpeg",
+        image: "../../assets/images/Silver_environmental_achievement_badge,_eco_202606112044.jpeg",
         condition: function(user) {
             return (user.puntos || 0) >= 100;
         }
@@ -47,7 +47,7 @@ const badges = [
         id: 5,
         name: "Eco líder",
         description: "Completa 5 retos ecológicos.",
-        image: "../../imagen/Gold_environmental_achievement_badge,_eco_202606112045.jpeg",
+        image: "../../assets/images/Gold_environmental_achievement_badge,_eco_202606112045.jpeg",
         condition: function(user) {
             return (user.retos || 0) >= 5;
         }
@@ -56,7 +56,7 @@ const badges = [
         id: 6,
         name: "Defensor verde",
         description: "Alcanza 250 puntos acumulados.",
-        image: "../../imagen/Gold_environmental_achievement_badge,_eco_202606112045.jpeg",
+        image: "../../assets/images/Gold_environmental_achievement_badge,_eco_202606112045.jpeg",
         condition: function(user) {
             return (user.puntos || 0) >= 250;
         }
@@ -65,7 +65,7 @@ const badges = [
         id: 7,
         name: "Comunidad activa",
         description: "Publica una acción en el Muro Eco.",
-        image: "../../imagen/Silver_environmental_achievement_badge,_eco_202606112044.jpeg",
+        image: "../../assets/images/Silver_environmental_achievement_badge,_eco_202606112044.jpeg",
         condition: function() {
             const posts = JSON.parse(localStorage.getItem("ecoRetosPosts")) || [];
 
@@ -78,7 +78,7 @@ const badges = [
         id: 8,
         name: "Nivel avanzado",
         description: "Llega al nivel 3 dentro de Eco-Retos.",
-        image: "../../imagen/Gold_environmental_achievement_badge,_eco_202606112045.jpeg",
+        image: "../../assets/images/Gold_environmental_achievement_badge,_eco_202606112045.jpeg",
         condition: function(user) {
             return (user.nivel || 1) >= 3;
         }
@@ -100,7 +100,7 @@ function renderBadges() {
         const card = document.createElement("article");
 
         card.className =
-        "badge-card " + (unlocked ? "unlocked" : "locked");
+            "badge-card " + (unlocked ? "unlocked" : "locked");
 
         card.innerHTML = `
             <div class="badge-icon">

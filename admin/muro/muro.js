@@ -65,7 +65,7 @@ function renderPosts() {
 
     if (posts.length === 0) {
         postsList.innerHTML =
-        '<p class="empty-posts">Todavía no hay publicaciones.</p>';
+            '<p class="empty-posts">Todavía no hay publicaciones.</p>';
         return;
     }
 

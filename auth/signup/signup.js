@@ -57,5 +57,5 @@ signupForm.addEventListener("submit", function(e) {
         racha: 0
     });
 
-    window.location.href = "../index.html";
+    window.location.href = "../../index.html";
 });

@@ -23,7 +23,7 @@ loginForm.addEventListener("submit", function(e) {
             racha: 0
         });
 
-        window.location.href = "../index.html";
+        window.location.href = "../../index.html";
         return;
     }
 
@@ -31,7 +31,7 @@ loginForm.addEventListener("submit", function(e) {
 
     if (!registeredUser) {
         alert("No existe una cuenta registrada. Primero debe registrarse.");
-        window.location.href = "./signup.html";
+        window.location.href = "../signup/signup.html";
         return;
     }
 
@@ -52,5 +52,5 @@ loginForm.addEventListener("submit", function(e) {
         racha: registeredUser.racha || 0
     });
 
-    window.location.href = "../index.html";
+    window.location.href = "../../index.html";
 });

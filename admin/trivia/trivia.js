@@ -48,10 +48,10 @@ function renderQuestion() {
     const current = questions[currentIndex];
 
     questionNumber.textContent =
-    "Pregunta " + (currentIndex + 1) + " de " + questions.length;
+        "Pregunta " + (currentIndex + 1) + " de " + questions.length;
 
     progressFill.style.width =
-    (((currentIndex + 1) / questions.length) * 100) + "%";
+        (((currentIndex + 1) / questions.length) * 100) + "%";
 
     questionText.textContent = current.question;
 

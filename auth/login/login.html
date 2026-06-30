@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
     <meta charset="UTF-8">
@@ -7,12 +8,12 @@
 
     <title>Eco-Retos | Login</title>
 
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="../mainContainer.css">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../mainContainer.css">
+    <link rel="stylesheet" href="./login.css">
 
     <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 </head>
 
@@ -27,23 +28,19 @@
             <div class="login-header">
 
                 <div class="logo-container">
-                    <img src="../imagen/logo.png" alt="Logo Eco-Retos">
+                    <img src="../../assets/images/logo.png" alt="Logo Eco-Retos">
                 </div>
 
-                <h1>Eco-Retos</h1>
-
-                <p>
-                    Cuida el planeta, un reto a la vez
-                </p>
+                <h1>Bienvenido</h1>
+                <p>Inicia sesión para continuar</p>
 
             </div>
 
-                <h2>Bienvenido de vuelta</h2>
+            <div class="login-content">
 
                 <form id="loginForm">
 
                     <div class="form-group">
-
                         <i class="fa-solid fa-envelope"></i>
 
                         <input
@@ -52,11 +49,9 @@
                             class="input-control"
                             placeholder="Correo electrónico"
                             required>
-
                     </div>
 
                     <div class="form-group">
-
                         <i class="fa-solid fa-lock"></i>
 
                         <input
@@ -65,15 +60,6 @@
                             class="input-control"
                             placeholder="Contraseña"
                             required>
-
-                    </div>
-
-                    <div class="forgot-password">
-
-                        <a href="#">
-                            ¿Olvidaste tu contraseña?
-                        </a>
-
                     </div>
 
                     <button
@@ -86,12 +72,25 @@
 
                 </form>
 
+                <div class="social-buttons">
+
+                    <button class="btn-outline">
+                        <i class="fa-brands fa-google"></i>
+                        Google
+                    </button>
+
+                    <button class="btn-outline">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        Facebook
+                    </button>
+
+                </div>
 
                 <div class="register-link">
 
                     ¿No tienes cuenta?
 
-                    <a href="./signup.html">
+                    <a href="../signup/signup.html">
                         Regístrate
                     </a>
 
@@ -105,7 +104,7 @@
 
 </div>
 
-<script src="../auth.js"></script>
+<script src="../../auth.js"></script>
 <script src="./login.js"></script>
 
 </body>

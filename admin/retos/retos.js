@@ -15,7 +15,7 @@ const retos = [
         puntos: 10,
         dificultad: "facil",
         icono: "fa-bottle-water",
-        imagen: "../../imagen/Student_placing_bottles_recyclin…_202606112046.jpeg"
+        imagen: "../../assets/images/reto_reciclaje.jpeg"
     },
     {
         id: 2,
@@ -24,7 +24,7 @@ const retos = [
         puntos: 15,
         dificultad: "facil",
         icono: "fa-droplet",
-        imagen: "../../imagen/Student_saving_water_brushing_teeth_202606112047.jpeg"
+        imagen: "../../assets/images/reto_agua.jpeg"
     },
     {
         id: 3,
@@ -33,7 +33,7 @@ const retos = [
         puntos: 15,
         dificultad: "facil",
         icono: "fa-lightbulb",
-        imagen: "../../imagen/Student_turning_off_lights_202606112048.jpeg"
+        imagen: "../../assets/images/reto_energia.jpeg"
     },
     {
         id: 4,
@@ -42,7 +42,7 @@ const retos = [
         puntos: 25,
         dificultad: "medio",
         icono: "fa-recycle",
-        imagen: "../../imagen/Student_sorting_waste_202606112049.jpeg"
+        imagen: "../../assets/images/clasificar_residuos.jpeg"
     },
     {
         id: 5,
@@ -51,7 +51,7 @@ const retos = [
         puntos: 35,
         dificultad: "dificil",
         icono: "fa-people-group",
-        imagen: "../../imagen/Student_cleaning_school_202606112050.jpeg"
+        imagen: "../../assets/images/limpieza_escolar.jpeg"
     },
     {
         id: 6,
@@ -60,7 +60,7 @@ const retos = [
         puntos: 20,
         dificultad: "facil",
         icono: "fa-glass-water",
-        imagen: "../../imagen/Student_using_reusable_bottle_202606112051.jpeg"
+        imagen: "../../assets/images/botella_reutilizable.jpeg"
     },
     {
         id: 7,
@@ -69,7 +69,7 @@ const retos = [
         puntos: 40,
         dificultad: "medio",
         icono: "fa-seedling",
-        imagen: "../../imagen/Student_planting_seedling_202606112052.jpeg"
+        imagen: "../../assets/images/sembrar_planta.jpeg"
     },
     {
         id: 8,
@@ -78,7 +78,7 @@ const retos = [
         puntos: 20,
         dificultad: "medio",
         icono: "fa-file-lines",
-        imagen: "../../imagen/Student_using_digital_media_202606112053.jpeg"
+        imagen: "../../assets/images/reducir_papel.jpeg"
     },
     {
         id: 9,
@@ -87,7 +87,7 @@ const retos = [
         puntos: 45,
         dificultad: "dificil",
         icono: "fa-bicycle",
-        imagen: "../../imagen/Student_walking_or_riding_bike_202606112054.jpeg"
+        imagen: "../../assets/images/imagenbicicleta.jpeg"
     },
     {
         id: 10,
@@ -96,7 +96,7 @@ const retos = [
         puntos: 60,
         dificultad: "dificil",
         icono: "fa-earth-americas",
-        imagen: "../../imagen/Student_participating_in_community_recycling_event_202606112055.jpeg"
+        imagen: "../../assets/images/jornada_reciclaje.jpeg"
     }
 ];
 
@@ -157,7 +157,7 @@ function renderChallenges(filter = "todos") {
 
     if (filteredRetos.length === 0) {
         challengeList.innerHTML =
-        '<p class="empty-message">No hay retos disponibles en esta categoría.</p>';
+            '<p class="empty-message">No hay retos disponibles en esta categoría.</p>';
         return;
     }
 
@@ -168,11 +168,7 @@ function renderChallenges(filter = "todos") {
         card.className = "challenge-card";
 
         card.innerHTML = `
-            ${
-                reto.imagen
-                ? `<img class="challenge-img" src="${reto.imagen}" alt="${reto.titulo}">`
-                : ""
-            }
+            <img class="challenge-img" src="${reto.imagen}" alt="${reto.titulo}">
 
             <div class="challenge-top">
                 <div class="challenge-icon">
@@ -195,8 +191,7 @@ function renderChallenges(filter = "todos") {
                 </span>
             </div>
 
-            <button class="complete-btn ${isCompleted ? "completed" : ""}"
-                data-id="${reto.id}">
+            <button class="complete-btn ${isCompleted ? "completed" : ""}" data-id="${reto.id}">
                 ${isCompleted ? "Completado" : "Completar reto"}
             </button>
         `;
@@ -257,7 +252,6 @@ filterButtons.forEach(function(button) {
         });
 
         this.classList.add("active");
-
         renderChallenges(this.dataset.filter);
     });
 });
