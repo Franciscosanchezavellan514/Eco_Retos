@@ -10,6 +10,9 @@ const resultBox = document.getElementById("resultBox");
 const scoreText = document.getElementById("scoreText");
 const restartBtn = document.getElementById("restartBtn");
 
+const TRIVIA_STATE_KEY = "ecoRetosTriviaState";
+const POINTS_PER_QUESTION = 20;
+
 const questions = [
     {
         question: "¿Cuál de estos materiales tarda más tiempo en degradarse?",
@@ -41,8 +44,137 @@ const questions = [
 let currentIndex = 0;
 let score = 0;
 let answered = false;
+let answeredQuestions = [];
+let triviaCompleted = false;
+
+function calculateLevel(points) {
+    if (points >= 800) {
+        return 5;
+    }
+
+    if (points >= 500) {
+        return 4;
+    }
+
+    if (points >= 250) {
+        return 3;
+    }
+
+    if (points >= 100) {
+        return 2;
+    }
+
+    return 1;
+}
+
+function updateUser(updatedUser) {
+    user = updatedUser;
+
+    if (typeof updateCurrentUser === "function") {
+        updateCurrentUser(user);
+    } else {
+        saveSession(user);
+
+        const registeredUser = getRegisteredUser();
+
+        if (registeredUser && registeredUser.email === user.email) {
+            saveRegisteredUser(user);
+        }
+    }
+}
+
+function getTriviaState() {
+    const state = localStorage.getItem(TRIVIA_STATE_KEY);
+
+    if (state) {
+        return JSON.parse(state);
+    }
+
+    return {
+        currentIndex: 0,
+        score: 0,
+        answeredQuestions: [],
+        completed: false
+    };
+}
+
+function saveTriviaState() {
+    const state = {
+        currentIndex: currentIndex,
+        score: score,
+        answeredQuestions: answeredQuestions,
+        completed: triviaCompleted
+    };
+
+    localStorage.setItem(TRIVIA_STATE_KEY, JSON.stringify(state));
+}
+
+function loadTriviaState() {
+    const state = getTriviaState();
+
+    currentIndex = state.currentIndex || 0;
+    score = state.score || 0;
+    answeredQuestions = Array.isArray(state.answeredQuestions)
+        ? state.answeredQuestions
+        : [];
+    triviaCompleted = state.completed || false;
+
+    if (currentIndex >= questions.length) {
+        triviaCompleted = true;
+    }
+}
+
+function resetTriviaState() {
+    currentIndex = 0;
+    score = 0;
+    answered = false;
+    answeredQuestions = [];
+    triviaCompleted = false;
+
+    localStorage.setItem(
+        TRIVIA_STATE_KEY,
+        JSON.stringify({
+            currentIndex: 0,
+            score: 0,
+            answeredQuestions: [],
+            completed: false
+        })
+    );
+}
+
+function goToNextAvailableQuestion() {
+    while (
+        currentIndex < questions.length &&
+        answeredQuestions.includes(currentIndex)
+    ) {
+        currentIndex++;
+    }
+
+    if (currentIndex >= questions.length) {
+        finishTrivia();
+        return;
+    }
+
+    saveTriviaState();
+    renderQuestion();
+}
 
 function renderQuestion() {
+    if (triviaCompleted) {
+        showResult();
+        return;
+    }
+
+    if (currentIndex >= questions.length) {
+        finishTrivia();
+        return;
+    }
+
+    if (answeredQuestions.includes(currentIndex)) {
+        goToNextAvailableQuestion();
+        return;
+    }
+
     answered = false;
 
     const current = questions[currentIndex];
@@ -73,6 +205,8 @@ function renderQuestion() {
 
         optionsBox.appendChild(button);
     });
+
+    saveTriviaState();
 }
 
 function selectAnswer(selectedIndex, selectedButton) {
@@ -89,10 +223,20 @@ function selectAnswer(selectedIndex, selectedButton) {
         button.disabled = true;
     });
 
+    if (!answeredQuestions.includes(currentIndex)) {
+        answeredQuestions.push(currentIndex);
+    }
+
     if (selectedIndex === current.correct) {
         selectedButton.classList.add("correct");
         selectedButton.querySelector("i").className = "fa-solid fa-check";
-        score += 20;
+
+        score += POINTS_PER_QUESTION;
+
+        user.puntos = (user.puntos || 0) + POINTS_PER_QUESTION;
+        user.nivel = calculateLevel(user.puntos || 0);
+
+        updateUser(user);
     } else {
         selectedButton.classList.add("wrong");
         selectedButton.querySelector("i").className = "fa-solid fa-xmark";
@@ -101,51 +245,36 @@ function selectAnswer(selectedIndex, selectedButton) {
         buttons[current.correct].querySelector("i").className = "fa-solid fa-check";
     }
 
+    saveTriviaState();
+
     setTimeout(function() {
         currentIndex++;
 
         if (currentIndex >= questions.length) {
             finishTrivia();
         } else {
+            saveTriviaState();
             renderQuestion();
         }
     }, 900);
 }
 
-function finishTrivia() {
+function showResult() {
     document.querySelector(".trivia-card").classList.add("hidden");
     resultBox.classList.remove("hidden");
-
     scoreText.textContent = score;
+}
 
-    user.puntos = (user.puntos || 0) + score;
+function finishTrivia() {
+    triviaCompleted = true;
+    currentIndex = questions.length;
 
-    if (user.puntos >= 800) {
-        user.nivel = 5;
-    } else if (user.puntos >= 500) {
-        user.nivel = 4;
-    } else if (user.puntos >= 250) {
-        user.nivel = 3;
-    } else if (user.puntos >= 100) {
-        user.nivel = 2;
-    } else {
-        user.nivel = 1;
-    }
-
-    saveSession(user);
-
-    const registeredUser = getRegisteredUser();
-
-    if (registeredUser) {
-        registeredUser.puntos = user.puntos;
-        registeredUser.nivel = user.nivel;
-        saveRegisteredUser(registeredUser);
-    }
+    saveTriviaState();
+    showResult();
 }
 
 restartBtn.addEventListener("click", function() {
-    currentIndex = 0;
-    score = 0;
+    resetTriviaState();
 
     resultBox.classList.add("hidden");
     document.querySelector(".trivia-card").classList.remove("hidden");
@@ -153,4 +282,10 @@ restartBtn.addEventListener("click", function() {
     renderQuestion();
 });
 
-renderQuestion();
+loadTriviaState();
+
+if (triviaCompleted) {
+    showResult();
+} else {
+    renderQuestion();
+}

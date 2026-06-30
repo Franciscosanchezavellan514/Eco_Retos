@@ -1,260 +1,583 @@
 protectPage();
 
-const challengeList = document.getElementById("challengeList");
-const currentPoints = document.getElementById("currentPoints");
-const currentChallenges = document.getElementById("currentChallenges");
-const filterButtons = document.querySelectorAll(".filter-btn");
-
 let user = getCurrentUser();
 
-const retos = [
+const currentPoints = document.getElementById("currentPoints");
+const currentChallenges = document.getElementById("currentChallenges");
+const challengeList = document.getElementById("challengeList");
+const shopList = document.getElementById("shopList");
+const inventoryList = document.getElementById("inventoryList");
+const tabButtons = document.querySelectorAll(".tab-btn");
+const tabContents = document.querySelectorAll(".tab-content");
+
+const INVENTORY_KEY = "ecoRetosInventory";
+const COMPLETED_KEY = "ecoRetosCompletedChallenges";
+
+const materials = [
     {
-        id: 1,
-        titulo: "Reciclar una botella",
-        descripcion: "Deposita una botella plástica en un contenedor de reciclaje.",
-        puntos: 10,
-        dificultad: "facil",
-        icono: "fa-bottle-water",
-        imagen: "../../assets/images/reto_reciclaje.jpeg"
+        id: "botella",
+        name: "Botella plástica",
+        icon: "fa-bottle-water",
+        price: 40,
+        description: "Base para construir macetas, carritos y comederos."
     },
     {
-        id: 2,
-        titulo: "Ahorrar agua en casa",
-        descripcion: "Cierra el grifo mientras te cepillas los dientes.",
-        puntos: 15,
-        dificultad: "facil",
-        icono: "fa-droplet",
-        imagen: "../../assets/images/reto_agua.jpeg"
+        id: "tapa",
+        name: "Tapa plástica",
+        icon: "fa-circle",
+        price: 10,
+        description: "Sirve como rueda o pieza decorativa."
     },
     {
-        id: 3,
-        titulo: "Apagar luces innecesarias",
-        descripcion: "Apaga luces de habitaciones vacías durante el día.",
-        puntos: 15,
-        dificultad: "facil",
-        icono: "fa-lightbulb",
-        imagen: "../../assets/images/reto_energia.jpeg"
+        id: "carton",
+        name: "Cartón reciclado",
+        icon: "fa-box",
+        price: 25,
+        description: "Material útil para organizadores y estructuras."
     },
     {
-        id: 4,
-        titulo: "Clasificar residuos",
-        descripcion: "Separa plástico, papel y residuos orgánicos.",
-        puntos: 25,
-        dificultad: "medio",
-        icono: "fa-recycle",
-        imagen: "../../assets/images/clasificar_residuos.jpeg"
+        id: "periodico",
+        name: "Papel periódico",
+        icon: "fa-newspaper",
+        price: 15,
+        description: "Sirve para decorar, reforzar o cubrir superficies."
     },
     {
-        id: 5,
-        titulo: "Limpieza escolar",
-        descripcion: "Participa en una actividad de limpieza dentro de tu centro educativo.",
-        puntos: 35,
-        dificultad: "dificil",
-        icono: "fa-people-group",
-        imagen: "../../assets/images/limpieza_escolar.jpeg"
+        id: "palito",
+        name: "Palito de madera",
+        icon: "fa-grip-lines",
+        price: 20,
+        description: "Funciona como eje, soporte o estructura."
     },
     {
-        id: 6,
-        titulo: "Usar botella reutilizable",
-        descripcion: "Utiliza una botella reutilizable durante todo el día.",
-        puntos: 20,
-        dificultad: "facil",
-        icono: "fa-glass-water",
-        imagen: "../../assets/images/botella_reutilizable.jpeg"
+        id: "tetrapak",
+        name: "Caja Tetra Pak",
+        icon: "fa-box-open",
+        price: 35,
+        description: "Ideal para crear casas, macetas y contenedores."
     },
     {
-        id: 7,
-        titulo: "Sembrar una planta",
-        descripcion: "Siembra una semilla o planta en casa o en la escuela.",
-        puntos: 40,
-        dificultad: "medio",
-        icono: "fa-seedling",
-        imagen: "../../assets/images/sembrar_planta.jpeg"
+        id: "cuerda",
+        name: "Cuerda o hilo",
+        icon: "fa-link",
+        price: 15,
+        description: "Sirve para colgar, sujetar y amarrar piezas."
     },
     {
-        id: 8,
-        titulo: "Reducir uso de papel",
-        descripcion: "Utiliza medios digitales en lugar de imprimir documentos.",
-        puntos: 20,
-        dificultad: "medio",
-        icono: "fa-file-lines",
-        imagen: "../../assets/images/reducir_papel.jpeg"
+        id: "cinta",
+        name: "Cinta adhesiva",
+        icon: "fa-tape",
+        price: 20,
+        description: "Permite unir materiales durante la construcción."
     },
     {
-        id: 9,
-        titulo: "Caminar o usar bicicleta",
-        descripcion: "Realiza un trayecto sin utilizar vehículo motorizado.",
-        puntos: 45,
-        dificultad: "dificil",
-        icono: "fa-bicycle",
-        imagen: "../../assets/images/imagenbicicleta.jpeg"
+        id: "pintura",
+        name: "Pintura ecológica",
+        icon: "fa-palette",
+        price: 30,
+        description: "Sirve para decorar los proyectos ecológicos."
     },
     {
-        id: 10,
-        titulo: "Jornada de reciclaje comunitaria",
-        descripcion: "Participa en una actividad organizada de reciclaje comunitario.",
-        puntos: 60,
-        dificultad: "dificil",
-        icono: "fa-earth-americas",
-        imagen: "../../assets/images/jornada_reciclaje.jpeg"
+        id: "cd",
+        name: "CD/DVD viejo",
+        icon: "fa-compact-disc",
+        price: 30,
+        description: "Material decorativo para proyectos creativos."
+    },
+    {
+        id: "semillas",
+        name: "Semillas",
+        icon: "fa-seedling",
+        price: 25,
+        description: "Necesarias para retos de cultivo y plantas."
+    },
+    {
+        id: "tierra",
+        name: "Tierra abonada",
+        icon: "fa-mound",
+        price: 35,
+        description: "Base para macetas y proyectos de siembra."
     }
 ];
 
+const challenges = [
+    {
+        id: "carrito-botella",
+        name: "Carrito con botella plástica",
+        description: "Construye un carrito ecológico usando una botella como base y tapas como ruedas.",
+        icon: "fa-car-side",
+        difficulty: "medio",
+        reward: 120,
+        requirements: {
+            botella: 1,
+            tapa: 4,
+            palito: 2,
+            cinta: 1
+        }
+    },
+    {
+        id: "maceta-reciclada",
+        name: "Maceta reciclada",
+        description: "Crea una maceta reutilizando una botella plástica y siembra una planta pequeña.",
+        icon: "fa-seedling",
+        difficulty: "facil",
+        reward: 100,
+        requirements: {
+            botella: 1,
+            tierra: 1,
+            semillas: 1
+        }
+    },
+    {
+        id: "portalapices",
+        name: "Portalápices ecológico",
+        description: "Construye un portalápices decorativo reutilizando material reciclable.",
+        icon: "fa-pen",
+        difficulty: "facil",
+        reward: 90,
+        requirements: {
+            botella: 1,
+            pintura: 1,
+            periodico: 1
+        }
+    },
+    {
+        id: "organizador",
+        name: "Organizador de escritorio",
+        description: "Crea un organizador para útiles escolares usando cartón reciclado.",
+        icon: "fa-boxes-stacked",
+        difficulty: "medio",
+        reward: 140,
+        requirements: {
+            carton: 2,
+            cinta: 1,
+            pintura: 1
+        }
+    },
+    {
+        id: "comedero-aves",
+        name: "Comedero para aves",
+        description: "Diseña un comedero colgante para aves usando una botella plástica.",
+        icon: "fa-dove",
+        difficulty: "medio",
+        reward: 160,
+        requirements: {
+            botella: 1,
+            cuerda: 1,
+            semillas: 2
+        }
+    },
+    {
+        id: "molino-viento",
+        name: "Molino decorativo",
+        description: "Arma un molino decorativo reutilizando CD viejo, palitos y pintura.",
+        icon: "fa-fan",
+        difficulty: "dificil",
+        reward: 180,
+        requirements: {
+            cd: 1,
+            palito: 3,
+            cinta: 1,
+            pintura: 1
+        }
+    },
+    {
+        id: "casa-plantas",
+        name: "Casa para plantas",
+        description: "Convierte una caja Tetra Pak en una pequeña casa/maceta para plantas.",
+        icon: "fa-house-chimney",
+        difficulty: "dificil",
+        reward: 200,
+        requirements: {
+            tetrapak: 1,
+            tierra: 1,
+            semillas: 1,
+            pintura: 1
+        }
+    }
+];
+
+function updateUser(updatedUser) {
+    user = updatedUser;
+
+    if (typeof updateCurrentUser === "function") {
+        updateCurrentUser(user);
+    } else {
+        saveSession(user);
+        saveRegisteredUser(user);
+    }
+}
+
+function calculateLevel(points) {
+    if (points >= 800) {
+        return 5;
+    }
+
+    if (points >= 500) {
+        return 4;
+    }
+
+    if (points >= 250) {
+        return 3;
+    }
+
+    if (points >= 100) {
+        return 2;
+    }
+
+    return 1;
+}
+
+function getInventory() {
+    const inventory = localStorage.getItem(INVENTORY_KEY);
+
+    if (inventory) {
+        return JSON.parse(inventory);
+    }
+
+    const emptyInventory = {};
+
+    materials.forEach(function(material) {
+        emptyInventory[material.id] = 0;
+    });
+
+    localStorage.setItem(INVENTORY_KEY, JSON.stringify(emptyInventory));
+
+    return emptyInventory;
+}
+
+function saveInventory(inventory) {
+    localStorage.setItem(INVENTORY_KEY, JSON.stringify(inventory));
+}
+
 function getCompletedChallenges() {
-    const data = localStorage.getItem("ecoRetosCompletedChallenges");
-    return data ? JSON.parse(data) : [];
+    const completed = localStorage.getItem(COMPLETED_KEY);
+
+    if (completed) {
+        return JSON.parse(completed);
+    }
+
+    localStorage.setItem(COMPLETED_KEY, JSON.stringify([]));
+
+    return [];
 }
 
 function saveCompletedChallenges(completed) {
-    localStorage.setItem(
-        "ecoRetosCompletedChallenges",
-        JSON.stringify(completed)
-    );
+    localStorage.setItem(COMPLETED_KEY, JSON.stringify(completed));
 }
 
-function saveUserData() {
-    saveSession(user);
+function getMaterialName(materialId) {
+    const material = materials.find(function(item) {
+        return item.id === materialId;
+    });
 
-    const registeredUser = getRegisteredUser();
-
-    if (registeredUser) {
-        registeredUser.puntos = user.puntos;
-        registeredUser.retos = user.retos;
-        registeredUser.nivel = user.nivel;
-        registeredUser.racha = user.racha;
-
-        saveRegisteredUser(registeredUser);
-    }
+    return material ? material.name : materialId;
 }
 
-function updateResume() {
-    currentPoints.textContent = user.puntos || 0;
-    currentChallenges.textContent = user.retos || 0;
+function getMaterialIcon(materialId) {
+    const material = materials.find(function(item) {
+        return item.id === materialId;
+    });
+
+    return material ? material.icon : "fa-box";
 }
 
-function updateLevel() {
-    if (user.puntos >= 800) {
-        user.nivel = 5;
-    } else if (user.puntos >= 500) {
-        user.nivel = 4;
-    } else if (user.puntos >= 250) {
-        user.nivel = 3;
-    } else if (user.puntos >= 100) {
-        user.nivel = 2;
-    } else {
-        user.nivel = 1;
-    }
+function hasRequiredMaterials(challenge, inventory) {
+    return Object.keys(challenge.requirements).every(function(materialId) {
+        return (inventory[materialId] || 0) >= challenge.requirements[materialId];
+    });
 }
 
-function renderChallenges(filter = "todos") {
+function renderSummary() {
+    currentPoints.textContent = user?.puntos || 0;
+    currentChallenges.textContent = user?.retos || 0;
+}
+
+function renderChallenges() {
+    const inventory = getInventory();
     const completed = getCompletedChallenges();
 
     challengeList.innerHTML = "";
 
-    const filteredRetos = retos.filter(function(reto) {
-        return filter === "todos" || reto.dificultad === filter;
-    });
-
-    if (filteredRetos.length === 0) {
-        challengeList.innerHTML =
-            '<p class="empty-message">No hay retos disponibles en esta categoría.</p>';
-        return;
-    }
-
-    filteredRetos.forEach(function(reto) {
-        const isCompleted = completed.includes(reto.id);
+    challenges.forEach(function(challenge) {
+        const isCompleted = completed.includes(challenge.id);
+        const canBuild = hasRequiredMaterials(challenge, inventory);
 
         const card = document.createElement("article");
         card.className = "challenge-card";
 
-        card.innerHTML = `
-            <img class="challenge-img" src="${reto.imagen}" alt="${reto.titulo}">
+        const materialsHtml = Object.keys(challenge.requirements).map(function(materialId) {
+            const required = challenge.requirements[materialId];
+            const owned = inventory[materialId] || 0;
+            const ok = owned >= required;
 
+            return `
+                <span class="material-item ${ok ? "ok" : "missing"}">
+                    <i class="fa-solid ${getMaterialIcon(materialId)}"></i>
+                    ${getMaterialName(materialId)} ${owned}/${required}
+                </span>
+            `;
+        }).join("");
+
+        let buttonText = "Construir reto";
+        let buttonClass = "action-btn";
+        let disabled = "";
+
+        if (isCompleted) {
+            buttonText = "Reto completado";
+            buttonClass = "action-btn completed";
+            disabled = "disabled";
+        } else if (!canBuild) {
+            buttonText = "Faltan materiales";
+            buttonClass = "action-btn disabled";
+            disabled = "disabled";
+        }
+
+        card.innerHTML = `
             <div class="challenge-top">
+
                 <div class="challenge-icon">
-                    <i class="fa-solid ${reto.icono}"></i>
+                    <i class="fa-solid ${challenge.icon}"></i>
                 </div>
 
                 <div class="challenge-info">
-                    <h3>${reto.titulo}</h3>
-                    <p>${reto.descripcion}</p>
+                    <h3>${challenge.name}</h3>
+                    <p>${challenge.description}</p>
                 </div>
+
             </div>
 
             <div class="challenge-meta">
-                <span class="badge ${reto.dificultad}">
-                    ${reto.dificultad.toUpperCase()}
+                <span class="badge ${challenge.difficulty}">
+                    ${challenge.difficulty.toUpperCase()}
                 </span>
 
                 <span class="points">
-                    +${reto.puntos} puntos
+                    +${challenge.reward} pts
                 </span>
             </div>
 
-            <button class="complete-btn ${isCompleted ? "completed" : ""}" data-id="${reto.id}">
-                ${isCompleted ? "Completado" : "Completar reto"}
+            <div class="material-box">
+                <span class="material-title">Materiales requeridos</span>
+                <div class="material-list">
+                    ${materialsHtml}
+                </div>
+            </div>
+
+            <button class="${buttonClass}" data-id="${challenge.id}" ${disabled}>
+                ${buttonText}
             </button>
         `;
 
         challengeList.appendChild(card);
     });
 
-    const buttons = document.querySelectorAll(".complete-btn");
+    const buildButtons = document.querySelectorAll(".challenge-card .action-btn:not(.disabled):not(.completed)");
 
-    buttons.forEach(function(button) {
+    buildButtons.forEach(function(button) {
         button.addEventListener("click", function() {
-            const retoId = Number(this.dataset.id);
-            completeChallenge(retoId);
+            completeChallenge(this.dataset.id);
         });
     });
 }
 
-function completeChallenge(retoId) {
+function renderShop() {
+    const inventory = getInventory();
+
+    shopList.innerHTML = "";
+
+    materials.forEach(function(material) {
+        const canBuy = (user?.puntos || 0) >= material.price;
+
+        const card = document.createElement("article");
+        card.className = "shop-card";
+
+        card.innerHTML = `
+            <div class="shop-top">
+
+                <div class="shop-icon">
+                    <i class="fa-solid ${material.icon}"></i>
+                </div>
+
+                <div class="shop-info">
+                    <h3>${material.name}</h3>
+                    <p>${material.description}</p>
+                </div>
+
+            </div>
+
+            <div class="shop-meta">
+                <span class="points">
+                    ${material.price} pts
+                </span>
+
+                <span class="material-item ok">
+                    Tienes: ${inventory[material.id] || 0}
+                </span>
+            </div>
+
+            <button class="action-btn ${canBuy ? "buy" : "no-points"}" data-id="${material.id}">
+                ${canBuy ? "Comprar material" : "Puntos insuficientes"}
+            </button>
+        `;
+
+        shopList.appendChild(card);
+    });
+
+    const buyButtons = document.querySelectorAll(".shop-card .action-btn");
+
+    buyButtons.forEach(function(button) {
+        button.addEventListener("click", function() {
+            buyMaterial(this.dataset.id);
+        });
+    });
+}
+
+function renderInventory() {
+    const inventory = getInventory();
+
+    inventoryList.innerHTML = "";
+
+    const hasItems = Object.values(inventory).some(function(quantity) {
+        return quantity > 0;
+    });
+
+    if (!hasItems) {
+        inventoryList.innerHTML =
+            '<p class="empty-message">Todavía no tienes materiales. Compra en la Tienda Eco usando tus puntos.</p>';
+        return;
+    }
+
+    materials.forEach(function(material) {
+        const quantity = inventory[material.id] || 0;
+
+        if (quantity <= 0) {
+            return;
+        }
+
+        const card = document.createElement("article");
+        card.className = "inventory-card";
+
+        card.innerHTML = `
+            <div class="inventory-top">
+
+                <div class="inventory-icon">
+                    <i class="fa-solid ${material.icon}"></i>
+                </div>
+
+                <div class="inventory-info">
+                    <h3>${material.name}</h3>
+                    <p>${material.description}</p>
+                </div>
+
+            </div>
+
+            <div class="inventory-meta">
+                <span class="material-item ok">
+                    Cantidad disponible: ${quantity}
+                </span>
+            </div>
+        `;
+
+        inventoryList.appendChild(card);
+    });
+}
+
+function buyMaterial(materialId) {
+    const material = materials.find(function(item) {
+        return item.id === materialId;
+    });
+
+    if (!material) {
+        return;
+    }
+
+    if ((user?.puntos || 0) < material.price) {
+        alert("No tienes puntos suficientes. Gana más puntos en Trivia.");
+        return;
+    }
+
+    const inventory = getInventory();
+
+    inventory[material.id] = (inventory[material.id] || 0) + 1;
+
+    user.puntos = (user.puntos || 0) - material.price;
+    user.nivel = calculateLevel(user.puntos || 0);
+
+    saveInventory(inventory);
+    updateUser(user);
+
+    renderAll();
+
+    alert("Compraste: " + material.name);
+}
+
+function completeChallenge(challengeId) {
+    const challenge = challenges.find(function(item) {
+        return item.id === challengeId;
+    });
+
+    if (!challenge) {
+        return;
+    }
+
     const completed = getCompletedChallenges();
 
-    if (completed.includes(retoId)) {
+    if (completed.includes(challenge.id)) {
         alert("Este reto ya fue completado.");
         return;
     }
 
-    const reto = retos.find(function(item) {
-        return item.id === retoId;
-    });
+    const inventory = getInventory();
 
-    if (!reto) {
+    if (!hasRequiredMaterials(challenge, inventory)) {
+        alert("Aún te faltan materiales para completar este reto.");
         return;
     }
 
-    completed.push(retoId);
-    saveCompletedChallenges(completed);
+    Object.keys(challenge.requirements).forEach(function(materialId) {
+        inventory[materialId] =
+            (inventory[materialId] || 0) - challenge.requirements[materialId];
+    });
 
-    user.puntos = (user.puntos || 0) + reto.puntos;
+    completed.push(challenge.id);
+
+    user.puntos = (user.puntos || 0) + challenge.reward;
     user.retos = (user.retos || 0) + 1;
-    user.racha = (user.racha || 0) + 1;
+    user.nivel = calculateLevel(user.puntos || 0);
 
-    updateLevel();
-    saveUserData();
-    updateResume();
-    renderChallenges(getActiveFilter());
+    saveInventory(inventory);
+    saveCompletedChallenges(completed);
+    updateUser(user);
 
-    alert("Reto completado. Has ganado " + reto.puntos + " puntos.");
+    renderAll();
+
+    alert("¡Reto completado! Ganaste " + challenge.reward + " puntos.");
 }
 
-function getActiveFilter() {
-    const active = document.querySelector(".filter-btn.active");
-    return active ? active.dataset.filter : "todos";
+function renderAll() {
+    renderSummary();
+    renderChallenges();
+    renderShop();
+    renderInventory();
 }
 
-filterButtons.forEach(function(button) {
+tabButtons.forEach(function(button) {
     button.addEventListener("click", function() {
-        filterButtons.forEach(function(btn) {
+        const selectedTab = this.dataset.tab;
+
+        tabButtons.forEach(function(btn) {
             btn.classList.remove("active");
         });
 
+        tabContents.forEach(function(content) {
+            content.classList.remove("active");
+        });
+
         this.classList.add("active");
-        renderChallenges(this.dataset.filter);
+
+        document.getElementById(selectedTab + "Tab").classList.add("active");
     });
 });
 
-updateResume();
-renderChallenges();
+renderAll();
