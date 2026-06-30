@@ -1,5 +1,7 @@
 protectPage();
 
+const DEFAULT_AVATAR = "../../assets/images/avatar_202606112038.jpeg";
+
 const user = getCurrentUser();
 
 const postText = document.getElementById("postText");
@@ -10,6 +12,7 @@ const DEFAULT_POSTS = [
     {
         id: 1,
         author: "Melissa Briones",
+        authorPhoto: "",
         text: "Hoy participé en una actividad de limpieza dentro del centro educativo.",
         likes: 12,
         comments: 3,
@@ -19,6 +22,7 @@ const DEFAULT_POSTS = [
     {
         id: 2,
         author: "Andrés Calderón",
+        authorPhoto: "",
         text: "Clasifiqué residuos en casa separando plástico, papel y orgánicos.",
         likes: 8,
         comments: 1,
@@ -28,6 +32,7 @@ const DEFAULT_POSTS = [
     {
         id: 3,
         author: "Francisco Sánchez",
+        authorPhoto: "",
         text: "Completé el reto de ahorro de agua durante la mañana.",
         likes: 15,
         comments: 4,
@@ -58,6 +63,18 @@ function savePosts(posts) {
     );
 }
 
+function getPostAvatar(post) {
+    if (post.authorPhoto) {
+        return post.authorPhoto;
+    }
+
+    if (post.author === user?.nombre && user?.fotoPerfil) {
+        return user.fotoPerfil;
+    }
+
+    return DEFAULT_AVATAR;
+}
+
 function renderPosts() {
     const posts = getPosts();
 
@@ -71,14 +88,13 @@ function renderPosts() {
 
     posts.forEach(function(post) {
         const card = document.createElement("article");
-
         card.className = "post-card";
 
         card.innerHTML = `
             <div class="post-header">
 
                 <div class="post-avatar">
-                    <i class="fa-solid fa-user"></i>
+                    <img src="${getPostAvatar(post)}" alt="Avatar de ${post.author}">
                 </div>
 
                 <div class="post-user">
@@ -94,8 +110,7 @@ function renderPosts() {
 
             <div class="post-actions">
 
-                <button class="post-action ${post.liked ? "active" : ""}"
-                    data-id="${post.id}">
+                <button class="post-action ${post.liked ? "active" : ""}" data-id="${post.id}">
                     <i class="fa-solid fa-thumbs-up"></i>
                     <span>${post.likes}</span>
                 </button>
@@ -160,7 +175,8 @@ publishBtn.addEventListener("click", function() {
 
     const newPost = {
         id: Date.now(),
-        author: user.nombre || "Estudiante Eco",
+        author: user?.nombre || "Estudiante Eco",
+        authorPhoto: user?.fotoPerfil || "",
         text: text,
         likes: 0,
         comments: 0,

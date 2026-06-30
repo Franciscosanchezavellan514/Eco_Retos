@@ -1,177 +1,168 @@
 .back-btn{
-    width:34px;
-    height:34px;
-
-    border-radius:50%;
-    background:rgba(255,255,255,.16);
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    color:white;
-    margin-bottom:.8rem;
+ width:34px;
+ height:34px;
+ border-radius:50%;
+ background:rgba(255,255,255,.16);
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ color:white;
+ margin-bottom:.8rem;
 }
 
 .profile-card{
-
-    background:white;
-
-    border:1px solid #dcebdc;
-    border-radius:var(--radius-md);
-
-    padding:1.2rem;
-
-    text-align:center;
-
-    margin-bottom:1rem;
+ background:white;
+ border:1px solid #dcebdc;
+ border-radius:var(--radius-md);
+ padding:1.2rem;
+ text-align:center;
+ margin-bottom:1rem;
 }
 
 .profile-avatar {
-    width: 90px;
-    height: 90px;
-    margin: auto;
-    margin-bottom: 1rem;
-    border-radius: 50%;
-    overflow: hidden;
-    background: var(--green-soft);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+ width: 90px;
+ height: 90px;
+ margin: auto;
+ margin-bottom: 1rem;
+ border-radius: 50%;
+ overflow: hidden;
+ background: var(--green-soft);
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ border: 3px solid var(--green-soft);
 }
 
 .profile-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+ border-radius: 50%;
+}
+
+.profile-photo-actions {
+ display: flex;
+ justify-content: center;
+ gap: 0.5rem;
+ margin-bottom: 1rem;
+ flex-wrap: wrap;
+}
+
+.photo-btn {
+ border: none;
+ border-radius: 999px;
+ padding: 0.55rem 0.85rem;
+ background: var(--green-main);
+ color: white;
+ font-size: 0.72rem;
+ font-weight: 800;
+ display: inline-flex;
+ align-items: center;
+ gap: 0.35rem;
+ cursor: pointer;
+}
+
+.danger-photo-btn {
+ background: #ffeaea;
+ color: var(--danger);
 }
 
 .profile-card h2{
-
-    color:var(--green-dark);
-    margin-bottom:.3rem;
+ color:var(--green-dark);
+ margin-bottom:.3rem;
 }
 
 .profile-card p{
-
-    color:var(--muted);
-    font-size:.8rem;
+ color:var(--muted);
+ font-size:.8rem;
 }
 
 .profile-stats{
-
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-
-    gap:.75rem;
-
-    margin-bottom:1rem;
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:.75rem;
+ margin-bottom:1rem;
 }
 
 .stat-item{
-
-    background:white;
-
-    border:1px solid #dcebdc;
-    border-radius:var(--radius-md);
-
-    padding:1rem;
-
-    text-align:center;
+ background:white;
+ border:1px solid #dcebdc;
+ border-radius:var(--radius-md);
+ padding:1rem;
+ text-align:center;
 }
 
 .stat-item span{
-
-    display:block;
-
-    color:var(--muted);
-    font-size:.7rem;
-
-    margin-bottom:.25rem;
+ display:block;
+ color:var(--muted);
+ font-size:.7rem;
+ margin-bottom:.25rem;
 }
 
 .stat-item strong{
-
-    color:var(--green-main);
-    font-size:1.15rem;
+ color:var(--green-main);
+ font-size:1.15rem;
 }
 
 .progress-header{
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    margin-bottom:.8rem;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:.8rem;
 }
 
 .progress-header span{
-
-    font-size:.8rem;
-    color:var(--green-dark);
+ font-size:.8rem;
+ color:var(--green-dark);
 }
 
 .progress-header strong{
-
-    color:var(--green-main);
+ color:var(--green-main);
 }
 
 .progress-bar-profile{
-
-    width:100%;
-    height:12px;
-
-    background:#e3ece3;
-
-    border-radius:999px;
-
-    overflow:hidden;
-
-    margin-bottom:.8rem;
+ width:100%;
+ height:12px;
+ background:#e3ece3;
+ border-radius:999px;
+ overflow:hidden;
+ margin-bottom:.8rem;
 }
 
 #levelProgress{
-
-    width:0%;
-
-    height:100%;
-
-    background:var(--green-main);
-
-    transition:.4s ease;
+ width:0%;
+ height:100%;
+ background:var(--green-main);
+ transition:.4s ease;
 }
 
 #progressDescription{
-
-    color:var(--muted);
-    font-size:.75rem;
+ color:var(--muted);
+ font-size:.75rem;
 }
 
 .logout-btn{
-
-    width:100%;
-
-    margin-top:1rem;
-
-    padding:.9rem;
-
-    border-radius:999px;
-
-    background:#ffeaea;
-    color:var(--danger);
-
-    font-weight:700;
+ width:100%;
+ margin-top:1rem;
+ padding:.9rem;
+ border-radius:999px;
+ background:#ffeaea;
+ color:var(--danger);
+ font-weight:700;
 }
 
 @media(max-width:320px){
+ .profile-avatar{
+  width:75px;
+  height:75px;
+ }
 
-    .profile-avatar{
-        width:75px;
-        height:75px;
-    }
+ .profile-stats{
+  gap:.5rem;
+ }
 
-    .profile-stats{
-        gap:.5rem;
-    }
+ .photo-btn {
+  font-size: 0.65rem;
+  padding: 0.5rem 0.65rem;
+ }
 }

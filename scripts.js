@@ -1,58 +1,91 @@
 protectRootPage();
 
+const DEFAULT_AVATAR = "./assets/images/avatar_202606112038.jpeg";
+
 const user = getCurrentUser();
 
-const userName = document.getElementById("userName");
-const userEmail = document.getElementById("userEmail");
-const userPoints = document.getElementById("userPoints");
-const userLevel = document.getElementById("userLevel");
-const userChallenges = document.getElementById("userChallenges");
+const homeAvatar =
+document.getElementById("homeAvatar");
 
-const gardenLevel = document.getElementById("gardenLevel");
-const gardenText = document.getElementById("gardenText");
-const gardenImage = document.getElementById("gardenImage");
+const userName =
+document.getElementById("userName");
 
-const logoutBtn = document.getElementById("logoutBtn");
+const userEmail =
+document.getElementById("userEmail");
 
-if (user) {
+const userPoints =
+document.getElementById("userPoints");
 
-    userName.textContent = user.nombre || "Estudiante Eco";
-    userEmail.textContent = user.email || "correo@ejemplo.com";
+const userLevel =
+document.getElementById("userLevel");
 
-    userPoints.textContent = user.puntos || 0;
-    userLevel.textContent = user.nivel || 1;
-    userChallenges.textContent = user.retos || 0;
+const userChallenges =
+document.getElementById("userChallenges");
 
-    gardenLevel.textContent = `Nivel ${user.nivel || 1}`;
+const gardenLevel =
+document.getElementById("gardenLevel");
+
+const gardenText =
+document.getElementById("gardenText");
+
+const gardenImage =
+document.getElementById("gardenImage");
+
+const logoutBtn =
+document.getElementById("logoutBtn");
+
+if(user){
+
+    homeAvatar.src =
+    user.fotoPerfil || DEFAULT_AVATAR;
+
+    userName.textContent =
+    user.nombre || "Estudiante Eco";
+
+    userEmail.textContent =
+    user.email || "correo@ejemplo.com";
+
+    userPoints.textContent =
+    user.puntos || 0;
+
+    userLevel.textContent =
+    user.nivel || 1;
+
+    userChallenges.textContent =
+    user.retos || 0;
+
+    gardenLevel.textContent =
+    "Nivel " + (user.nivel || 1);
 
     if ((user.puntos || 0) >= 800) {
 
         gardenImage.src =
-            "./assets/images/Large_eco_garden_with_trees,_202606112042.jpeg";
+        "./assets/images/Large_eco_garden_with_trees,_202606112042.jpeg";
 
         gardenText.textContent =
-            "Tu jardín está completamente desarrollado.";
+        "Tu jardín está completamente desarrollado.";
 
     } else if ((user.puntos || 0) >= 300) {
 
         gardenImage.src =
-            "./assets/images/Medium_eco_garden_with_flowers,_202606112041.jpeg";
+        "./assets/images/Medium_eco_garden_with_flowers,_202606112041.jpeg";
 
         gardenText.textContent =
-            "Tu jardín sigue creciendo con tus acciones ambientales.";
+        "Tu jardín sigue creciendo con tus acciones ambientales.";
 
     } else {
 
         gardenImage.src =
-            "./assets/images/Small_eco_garden_with_one_202606112040.jpeg";
+        "./assets/images/Small_eco_garden_with_one_202606112040.jpeg";
 
         gardenText.textContent =
-            "Completa retos para hacer crecer tu jardín.";
+        "Completa retos para hacer crecer tu jardín.";
     }
+
 }
 
-logoutBtn.addEventListener("click", function () {
-
+logoutBtn.addEventListener(
+"click",
+function(){
     closeSession();
-
 });

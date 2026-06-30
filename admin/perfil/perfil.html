@@ -1,43 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Eco-Retos | Perfil</title>
 
 <link rel="stylesheet" href="../../styles.css">
 <link rel="stylesheet" href="../../mainContainer.css">
 <link rel="stylesheet" href="./perfil.css">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
-
 <div class="app-wrapper">
-
 <div class="phone-frame">
 
 <div class="phone-screen">
-
 <header class="screen-header">
-
 <a href="../../index.html" class="back-btn">
 <i class="fa-solid fa-arrow-left"></i>
 </a>
 
-<p class="page-subtitle">
-Información del usuario
-</p>
+<p class="page-subtitle">Información del usuario</p>
 
 <h1 class="page-title">
 Mi Perfil
 </h1>
-
 </header>
 
 <main class="screen-content">
@@ -45,21 +33,29 @@ Mi Perfil
 <section class="profile-card">
 
 <div class="profile-avatar">
-    <img src="../../assets/images/avatar_202606112038.jpeg" alt="Avatar">
+<img id="profileAvatar" src="../../assets/images/avatar_202606112038.jpeg" alt="Avatar del usuario">
 </div>
 
-<h2 id="profileName">
-Usuario
-</h2>
+<input type="file" id="photoInput" accept="image/*" hidden>
 
-<p id="profileEmail">
-correo@ejemplo.com
-</p>
+<div class="profile-photo-actions">
+<button class="photo-btn" id="changePhotoBtn" type="button">
+<i class="fa-solid fa-camera"></i>
+Cambiar foto
+</button>
+
+<button class="photo-btn danger-photo-btn" id="removePhotoBtn" type="button">
+<i class="fa-solid fa-trash"></i>
+Quitar foto
+</button>
+</div>
+
+<h2 id="profileName">Usuario</h2>
+<p id="profileEmail">correo@ejemplo.com</p>
 
 </section>
 
 <section class="profile-stats">
-
 <div class="stat-item">
 <span>Nivel</span>
 <strong id="profileLevel">1</strong>
@@ -79,49 +75,32 @@ correo@ejemplo.com
 <span>Racha</span>
 <strong id="profileStreak">0</strong>
 </div>
-
 </section>
 
 <section class="card">
-
 <div class="progress-header">
-
 <span>Progreso de nivel</span>
-
-<strong id="nextLevelText">
-Nivel 2
-</strong>
-
+<strong id="nextLevelText">Nivel 2</strong>
 </div>
 
 <div class="progress-bar-profile">
-
 <div id="levelProgress"></div>
-
 </div>
 
 <p id="progressDescription">
 Continúa participando para subir de nivel.
 </p>
-
 </section>
 
-<button
-class="logout-btn"
-id="logoutBtn">
-
+<button class="logout-btn" id="logoutBtn">
 <i class="fa-solid fa-right-from-bracket"></i>
-
 Cerrar sesión
-
 </button>
 
 </main>
-
 </div>
 
 <nav class="bottom-nav">
-
 <a href="../../index.html">
 <i class="fa-solid fa-house"></i>
 Inicio
@@ -146,15 +125,12 @@ Muro
 <i class="fa-solid fa-user"></i>
 Perfil
 </a>
-
 </nav>
 
 </div>
-
 </div>
 
 <script src="../../auth.js"></script>
 <script src="./perfil.js"></script>
-
 </body>
 </html>

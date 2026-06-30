@@ -25,6 +25,16 @@ function saveSession(user) {
     localStorage.setItem(USER_KEY, JSON.stringify(user));
 }
 
+function updateCurrentUser(updatedUser) {
+    saveSession(updatedUser);
+
+    const registeredUser = getRegisteredUser();
+
+    if (registeredUser && registeredUser.email === updatedUser.email) {
+        saveRegisteredUser(updatedUser);
+    }
+}
+
 function closeSession() {
     localStorage.removeItem(AUTH_KEY);
     localStorage.removeItem(USER_KEY);
@@ -38,12 +48,8 @@ function getLoginPath() {
         return "../../auth/login/login.html";
     }
 
-    if (path.includes("/auth/login/")) {
+    if (path.includes("/auth/")) {
         return "./login.html";
-    }
-
-    if (path.includes("/auth/signup/")) {
-        return "../login/login.html";
     }
 
     return "./auth/login/login.html";
@@ -52,11 +58,7 @@ function getLoginPath() {
 function getHomePath() {
     const path = window.location.pathname;
 
-    if (path.includes("/auth/login/")) {
-        return "../../index.html";
-    }
-
-    if (path.includes("/auth/signup/")) {
+    if (path.includes("/auth/login/") || path.includes("/auth/signup/")) {
         return "../../index.html";
     }
 

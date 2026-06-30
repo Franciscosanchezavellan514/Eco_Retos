@@ -1,6 +1,13 @@
 protectPage();
 
-const user = getCurrentUser();
+const DEFAULT_AVATAR = "../../assets/images/avatar_202606112038.jpeg";
+
+let user = getCurrentUser();
+
+const profileAvatar = document.getElementById("profileAvatar");
+const photoInput = document.getElementById("photoInput");
+const changePhotoBtn = document.getElementById("changePhotoBtn");
+const removePhotoBtn = document.getElementById("removePhotoBtn");
 
 document.getElementById("profileName").textContent =
     user?.nombre || "Usuario";
@@ -20,39 +27,69 @@ document.getElementById("profileChallenges").textContent =
 document.getElementById("profileStreak").textContent =
     user?.racha || 0;
 
-const points = user?.puntos || 0;
+function renderAvatar() {
+    user = getCurrentUser();
+    profileAvatar.src = user?.fotoPerfil || DEFAULT_AVATAR;
+}
 
+changePhotoBtn.addEventListener("click", function() {
+    photoInput.click();
+});
+
+photoInput.addEventListener("change", function() {
+    const file = this.files[0];
+
+    if (!file) {
+        return;
+    }
+
+    if (!file.type.startsWith("image/")) {
+        alert("Seleccione un archivo de imagen válido.");
+        return;
+    }
+
+    if (file.size > 2 * 1024 * 1024) {
+        alert("La imagen es demasiado pesada. Use una imagen menor a 2 MB.");
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+        user.fotoPerfil = event.target.result;
+        updateCurrentUser(user);
+        renderAvatar();
+        alert("Foto de perfil actualizada correctamente.");
+    };
+
+    reader.readAsDataURL(file);
+});
+
+removePhotoBtn.addEventListener("click", function() {
+    user.fotoPerfil = "";
+    updateCurrentUser(user);
+    renderAvatar();
+    alert("Foto de perfil eliminada.");
+});
+
+const points = user?.puntos || 0;
 let progress = 0;
 let nextLevel = "Nivel 2";
 
-if (points < 100) {
-
+if(points < 100){
     progress = points;
-
     nextLevel = "Nivel 2";
-
-} else if (points < 250) {
-
+}else if(points < 250){
     progress = ((points - 100) / 150) * 100;
-
     nextLevel = "Nivel 3";
-
-} else if (points < 500) {
-
+}else if(points < 500){
     progress = ((points - 250) / 250) * 100;
-
     nextLevel = "Nivel 4";
-
-} else if (points < 800) {
-
+}else if(points < 800){
     progress = ((points - 500) / 300) * 100;
-
     nextLevel = "Nivel 5";
-
-} else {
-
+}else{
     progress = 100;
-
     nextLevel = "Máximo";
 }
 
@@ -63,8 +100,8 @@ document.getElementById("nextLevelText").textContent =
     nextLevel;
 
 document.getElementById("logoutBtn")
-    .addEventListener("click", function () {
+.addEventListener("click", function(){
+    closeSession();
+});
 
-        closeSession();
-
-    });
+renderAvatar();
