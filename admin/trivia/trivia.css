@@ -1,16 +1,171 @@
 .back-btn {
     width: 34px;
     height: 34px;
-
     border-radius: 50%;
     background: rgba(255,255,255,.16);
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     color: white;
     margin-bottom: 0.8rem;
+}
+
+.category-box,
+.group-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.instruction-card {
+    background: var(--green-soft);
+    border-color: var(--green-border);
+}
+
+.instruction-card h2 {
+    font-size: 0.95rem;
+    color: var(--green-dark);
+    margin-bottom: 0.35rem;
+}
+
+.instruction-card p {
+    font-size: 0.72rem;
+    color: var(--muted);
+    line-height: 1.4;
+}
+
+.category-card,
+.group-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    cursor: pointer;
+    transition: 0.2s ease;
+    position: relative;
+}
+
+.category-card:hover,
+.group-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--green-border);
+}
+
+.category-icon,
+.group-icon {
+    width: 2.9rem;
+    height: 2.9rem;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    font-size: 1.25rem;
+}
+
+.facil {
+    background: #e8f7eb;
+    color: var(--green-main);
+}
+
+.intermedia {
+    background: #fff3d8;
+    color: #b87500;
+}
+
+.dificil {
+    background: #ffe3e3;
+    color: #c23939;
+}
+
+.category-card h2,
+.group-card h2 {
+    font-size: 0.95rem;
+    color: var(--green-dark);
+    margin-bottom: 0.25rem;
+}
+
+.category-card p,
+.group-card p {
+    font-size: 0.72rem;
+    color: var(--muted);
+    line-height: 1.35;
+    margin-bottom: 0.35rem;
+}
+
+.category-card span,
+.group-status {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 800;
+    border-radius: 999px;
+    padding: 0.25rem 0.55rem;
+}
+
+.enter-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 0.45rem;
+    font-size: 0.68rem;
+    font-weight: 800;
+    color: white;
+    background: var(--green-main);
+    padding: 0.35rem 0.65rem;
+    border-radius: 999px;
+}
+
+.group-status.pending {
+    color: var(--muted);
+    background: #edf0ed;
+}
+
+.group-status.progress {
+    color: #b87500;
+    background: #fff3d8;
+}
+
+.group-status.completed {
+    color: var(--green-main);
+    background: #e8f7eb;
+}
+
+.section-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.section-head span {
+    display: block;
+    color: var(--muted);
+    font-size: 0.68rem;
+    font-weight: 700;
+    margin-bottom: 0.15rem;
+}
+
+.section-head h2 {
+    color: var(--green-dark);
+    font-size: 1rem;
+}
+
+.section-help {
+    color: var(--muted);
+    font-size: 0.7rem;
+    margin-top: 0.2rem;
+    line-height: 1.35;
+}
+
+.mini-back-btn {
+    width: 2.3rem;
+    height: 2.3rem;
+    border-radius: 50%;
+    background: var(--green-soft);
+    color: var(--green-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
 .trivia-card {
@@ -21,35 +176,40 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.7rem;
 }
 
 .trivia-top span {
-    font-size: 0.75rem;
     color: var(--muted);
+    font-size: 0.72rem;
     font-weight: 600;
 }
 
 .trivia-top strong {
-    background: var(--green-soft);
     color: var(--green-main);
-    padding: 0.3rem 0.6rem;
+    font-size: 0.78rem;
+}
+
+.difficulty-label {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 0.25rem 0.6rem;
     border-radius: 999px;
-    font-size: 0.72rem;
+    margin-bottom: 0.75rem;
 }
 
 .progress-bar {
     width: 100%;
-    height: 0.45rem;
-    background: #e3ece3;
+    height: 0.55rem;
+    background: #e4eee4;
     border-radius: 999px;
     overflow: hidden;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
 }
 
 #progressFill {
-    width: 20%;
+    width: 0%;
     height: 100%;
     background: var(--green-main);
     border-radius: 999px;
@@ -66,27 +226,23 @@
 .options-box {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.65rem;
 }
 
 .option-btn {
     width: 100%;
-    min-height: 3.2rem;
-
     background: white;
     border: 1px solid #dcebdc;
     border-radius: var(--radius-sm);
+    padding: 0.8rem;
+    text-align: left;
+    color: var(--green-dark);
+    font-size: 0.8rem;
+    font-weight: 600;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    padding: 0.8rem;
-    text-align: left;
-
-    color: var(--green-dark);
-    font-size: 0.8rem;
-    font-weight: 600;
 }
 
 .option-btn i {
@@ -117,17 +273,13 @@
 .result-icon {
     width: 4.5rem;
     height: 4.5rem;
-
     margin: 0 auto 1rem;
-
     border-radius: 50%;
     background: var(--green-soft);
     color: var(--green-main);
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     font-size: 2rem;
 }
 
@@ -147,6 +299,11 @@
     color: var(--green-main);
 }
 
+#changeGroupBtn,
+#changeCategoryBtn {
+    margin-top: 0.7rem;
+}
+
 @media (max-width: 320px) {
     #questionText {
         font-size: 0.92rem;
@@ -155,5 +312,20 @@
     .option-btn {
         font-size: 0.73rem;
         padding: 0.7rem;
+    }
+
+    .category-card,
+    .group-card {
+        gap: 0.65rem;
+    }
+
+    .category-card h2,
+    .group-card h2 {
+        font-size: 0.88rem;
+    }
+
+    .category-card p,
+    .group-card p {
+        font-size: 0.67rem;
     }
 }

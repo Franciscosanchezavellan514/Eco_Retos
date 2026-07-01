@@ -29,7 +29,7 @@
                     <i class="fa-solid fa-arrow-left"></i>
                 </a>
 
-                <p class="page-subtitle">Pon a prueba tus conocimientos</p>
+                <p class="page-subtitle">Categorías, grupos y puntos eco</p>
 
                 <h1 class="page-title">
                     Trivia Eco
@@ -39,11 +39,46 @@
 
             <main class="screen-content">
 
-                <section class="trivia-card card">
+                <section id="categoryBox" class="category-box">
+
+                    <div class="instruction-card card">
+                        <h2>Elige una dificultad</h2>
+                        <p>
+                            Toca una categoría para entrar. Cada respuesta correcta te dará puntos que podrás usar en la Tienda Eco para comprar materiales.
+                        </p>
+                    </div>
+
+                </section>
+
+                <section id="groupBox" class="group-box hidden">
+
+                    <div class="section-head">
+                        <button class="mini-back-btn" id="backToCategoriesBtn">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+
+                        <div>
+                            <span id="selectedCategoryLabel">Categoría</span>
+                            <h2>Elige un grupo de preguntas</h2>
+                            <p class="section-help">
+                                Toca un grupo para responder sus 5 preguntas.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="groupList" class="group-list"></div>
+
+                </section>
+
+                <section class="trivia-card card hidden" id="triviaCard">
 
                     <div class="trivia-top">
                         <span id="questionNumber">Pregunta 1 de 5</span>
-                        <strong>+20 pts</strong>
+                        <strong id="questionPoints">+10 pts</strong>
+                    </div>
+
+                    <div class="difficulty-label" id="difficultyLabel">
+                        Fácil · Grupo A
                     </div>
 
                     <div class="progress-bar">
@@ -64,14 +99,26 @@
                         <i class="fa-solid fa-check"></i>
                     </div>
 
-                    <h2>Trivia completada</h2>
+                    <h2>Grupo completado</h2>
+
+                    <p>
+                        Trivia: <strong id="resultCategory">Fácil · Grupo A</strong>
+                    </p>
 
                     <p>
                         Obtuviste <strong id="scoreText">0</strong> puntos.
                     </p>
 
                     <button class="btn-primary" id="restartBtn">
-                        Repetir trivia
+                        Repetir este grupo
+                    </button>
+
+                    <button class="btn-outline" id="changeGroupBtn">
+                        Elegir otro grupo
+                    </button>
+
+                    <button class="btn-outline" id="changeCategoryBtn">
+                        Volver a categorías
                     </button>
 
                 </section>
