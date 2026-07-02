@@ -19,52 +19,57 @@
  margin-bottom:1rem;
 }
 
-.profile-avatar {
- width: 90px;
- height: 90px;
- margin: auto;
- margin-bottom: 1rem;
- border-radius: 50%;
- overflow: hidden;
- background: var(--green-soft);
- display: flex;
- justify-content: center;
- align-items: center;
- border: 3px solid var(--green-soft);
+.profile-avatar{
+ width:90px;
+ height:90px;
+ margin:auto;
+ margin-bottom:1rem;
+ border-radius:50%;
+ overflow:hidden;
+ background:var(--green-soft);
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ border:3px solid var(--green-soft);
 }
 
-.profile-avatar img {
- width: 100%;
- height: 100%;
- object-fit: cover;
- border-radius: 50%;
+.profile-avatar img{
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ border-radius:50%;
 }
 
-.profile-photo-actions {
- display: flex;
- justify-content: center;
- gap: 0.5rem;
- margin-bottom: 1rem;
- flex-wrap: wrap;
+.profile-photo-actions{
+ display:flex;
+ justify-content:center;
+ gap:.5rem;
+ margin-bottom:1rem;
+ flex-wrap:wrap;
 }
 
-.photo-btn {
- border: none;
- border-radius: 999px;
- padding: 0.55rem 0.85rem;
- background: var(--green-main);
- color: white;
- font-size: 0.72rem;
- font-weight: 800;
- display: inline-flex;
- align-items: center;
- gap: 0.35rem;
- cursor: pointer;
+.photo-btn{
+ border:none;
+ border-radius:999px;
+ padding:.55rem .85rem;
+ background:var(--green-main);
+ color:white;
+ font-size:.72rem;
+ font-weight:800;
+ display:inline-flex;
+ align-items:center;
+ gap:.35rem;
+ cursor:pointer;
+ transition:.25s;
 }
 
-.danger-photo-btn {
- background: #ffeaea;
- color: var(--danger);
+.photo-btn:hover{
+ transform:translateY(-1px);
+}
+
+.danger-photo-btn{
+ background:#ffeaea;
+ color:var(--danger);
 }
 
 .profile-card h2{
@@ -79,7 +84,7 @@
 
 .profile-stats{
  display:grid;
- grid-template-columns:repeat(2,1fr);
+ grid-template-columns:repeat(3,1fr);
  gap:.75rem;
  margin-bottom:1rem;
 }
@@ -102,6 +107,108 @@
 .stat-item strong{
  color:var(--green-main);
  font-size:1.15rem;
+}
+
+.streak-section{
+ margin-bottom:1rem;
+}
+
+.streak-section .section-title{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:.9rem;
+}
+
+.streak-section .section-title h3{
+ color:var(--green-dark);
+ font-size:.95rem;
+ display:flex;
+ align-items:center;
+ gap:.4rem;
+}
+
+.streak-section .section-title h3 i{
+ color:#ff8a3d;
+}
+
+.streak-highlight{
+ display:flex;
+ align-items:center;
+ gap:.9rem;
+ background:linear-gradient(135deg,#fff3e9,#ffe6d5);
+ border:1px solid #ffd9b8;
+ border-radius:var(--radius-md);
+ padding:.9rem;
+ margin-bottom:.9rem;
+}
+
+.streak-fire{
+ width:52px;
+ height:52px;
+ min-width:52px;
+ border-radius:50%;
+ background:#ff8a3d;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ color:white;
+ font-size:1.4rem;
+ box-shadow:0 4px 14px rgba(255,138,61,.4);
+}
+
+.streak-highlight strong{
+ display:block;
+ font-size:1.6rem;
+ color:#c9581a;
+ line-height:1.1;
+}
+
+.streak-highlight strong::after{
+ content:" días";
+ font-size:.75rem;
+ font-weight:600;
+ color:#c9581a;
+}
+
+.streak-highlight span{
+ display:block;
+ font-size:.72rem;
+ color:#a15a2b;
+ margin-top:.15rem;
+}
+
+.streak-grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:.6rem;
+}
+
+.streak-box{
+ background:var(--green-soft);
+ border-radius:var(--radius-sm);
+ padding:.75rem;
+ text-align:center;
+}
+
+.streak-box i{
+ color:var(--green-main);
+ font-size:1rem;
+ margin-bottom:.35rem;
+ display:block;
+}
+
+.streak-box strong{
+ display:block;
+ font-size:1.05rem;
+ color:var(--green-dark);
+}
+
+.streak-box span{
+ display:block;
+ font-size:.65rem;
+ color:var(--muted);
+ margin-top:.15rem;
 }
 
 .progress-header{
@@ -151,7 +258,16 @@
  font-weight:700;
 }
 
+@media(max-width:480px){
+
+ .profile-stats{
+  grid-template-columns:repeat(3,1fr);
+ }
+
+}
+
 @media(max-width:320px){
+
  .profile-avatar{
   width:75px;
   height:75px;
@@ -161,8 +277,17 @@
   gap:.5rem;
  }
 
- .photo-btn {
-  font-size: 0.65rem;
-  padding: 0.5rem 0.65rem;
+ .photo-btn{
+  font-size:.65rem;
+  padding:.5rem .65rem;
  }
+
+ .streak-highlight strong{
+  font-size:1.35rem;
+ }
+
+ .streak-box strong{
+  font-size:.9rem;
+ }
+
 }

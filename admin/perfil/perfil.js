@@ -24,12 +24,40 @@ document.getElementById("profilePoints").textContent =
 document.getElementById("profileChallenges").textContent =
     user?.retos || 0;
 
-document.getElementById("profileStreak").textContent =
-    user?.racha || 0;
-
 function renderAvatar() {
-    user = getCurrentUser();
     profileAvatar.src = user?.fotoPerfil || DEFAULT_AVATAR;
+}
+
+function renderStreak() {
+    const racha = user?.racha || 0;
+    const mejorRacha = user?.mejorRacha || 0;
+    const diasActivos = user?.diasActivos || 0;
+    const retos = user?.retos || 0;
+    const puntos = user?.puntos || 0;
+
+    document.getElementById("streakCurrentDays").textContent = racha;
+    document.getElementById("streakBest").textContent = mejorRacha;
+    document.getElementById("activeDaysTotal").textContent = diasActivos;
+    document.getElementById("tasksCompletedTotal").textContent = retos;
+    document.getElementById("pointsEarnedTotal").textContent = puntos;
+
+    const streakMessage = document.getElementById("streakMessage");
+
+    if (racha <= 0) {
+        streakMessage.textContent = "Inicia hoy tu racha";
+    } else if (racha === 1) {
+        streakMessage.textContent = "¡Buen comienzo! Vuelve mañana";
+    } else if (racha < 5) {
+        streakMessage.textContent = "Racha activa, sigue así";
+    } else if (racha < 10) {
+        streakMessage.textContent = "¡Racha en llamas! No la pierdas";
+    } else {
+        streakMessage.textContent = "Racha imparable. Eres un eco-experto";
+    }
+}
+
+function saveCurrentUser(updatedUser) {
+    updateCurrentUser(updatedUser);
 }
 
 changePhotoBtn.addEventListener("click", function() {
@@ -57,7 +85,7 @@ photoInput.addEventListener("change", function() {
 
     reader.onload = function(event) {
         user.fotoPerfil = event.target.result;
-        updateCurrentUser(user);
+        saveCurrentUser(user);
         renderAvatar();
         alert("Foto de perfil actualizada correctamente.");
     };
@@ -67,7 +95,7 @@ photoInput.addEventListener("change", function() {
 
 removePhotoBtn.addEventListener("click", function() {
     user.fotoPerfil = "";
-    updateCurrentUser(user);
+    saveCurrentUser(user);
     renderAvatar();
     alert("Foto de perfil eliminada.");
 });
@@ -76,19 +104,19 @@ const points = user?.puntos || 0;
 let progress = 0;
 let nextLevel = "Nivel 2";
 
-if(points < 100){
+if (points < 100) {
     progress = points;
     nextLevel = "Nivel 2";
-}else if(points < 250){
+} else if (points < 250) {
     progress = ((points - 100) / 150) * 100;
     nextLevel = "Nivel 3";
-}else if(points < 500){
+} else if (points < 500) {
     progress = ((points - 250) / 250) * 100;
     nextLevel = "Nivel 4";
-}else if(points < 800){
+} else if (points < 800) {
     progress = ((points - 500) / 300) * 100;
     nextLevel = "Nivel 5";
-}else{
+} else {
     progress = 100;
     nextLevel = "Máximo";
 }
@@ -100,8 +128,9 @@ document.getElementById("nextLevelText").textContent =
     nextLevel;
 
 document.getElementById("logoutBtn")
-.addEventListener("click", function(){
-    closeSession();
-});
+    .addEventListener("click", function() {
+        closeSession();
+    });
 
 renderAvatar();
+renderStreak();
