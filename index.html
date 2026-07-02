@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="./mainContainer.css">
+    <link rel="stylesheet" href="./garden.css">
 
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -86,6 +87,33 @@
                     <p id="gardenText">
                         Completa retos para hacer crecer tu jardín.
                     </p>
+
+                    <div class="garden-currency">
+                        <i class="fa-solid fa-coins"></i>
+                        <span id="userCoins">0</span>
+                        <span class="garden-currency-label">monedas disponibles</span>
+                    </div>
+
+                    <div class="garden-slots-header">
+                        <span>Plantas colocadas</span>
+                        <strong id="slotsUsedLabel">0/3</strong>
+                    </div>
+
+                    <div class="garden-slots-grid" id="gardenSlotsGrid"></div>
+
+                </section>
+
+                <section class="card plant-shop-card">
+
+                    <div class="section-title">
+                        <h3><i class="fa-solid fa-store"></i> Tienda de plantas</h3>
+                    </div>
+
+                    <p class="plant-shop-hint">
+                        Usa tus monedas ganadas en Retos y Trivia para comprar y plantar en tu jardín.
+                    </p>
+
+                    <div class="plant-shop-list" id="plantShopList"></div>
 
                 </section>
 

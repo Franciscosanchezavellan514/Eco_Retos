@@ -25,6 +25,12 @@ const changeCategoryBtn = document.getElementById("changeCategoryBtn");
 
 const TRIVIA_STATE_KEY = "ecoRetosTriviaGroupedState";
 
+const DIFFICULTY_COINS = {
+    facil: 1,
+    intermedia: 2,
+    dificil: 3
+};
+
 const triviaData = {
     facil: {
         name: "Fácil",
@@ -449,13 +455,14 @@ function renderCategories() {
         <div class="instruction-card card">
             <h2>Elige una dificultad</h2>
             <p>
-                Toca una categoría para entrar. Cada respuesta correcta te dará puntos que podrás usar en la Tienda Eco para comprar materiales.
+                Toca una categoría para entrar. Cada respuesta correcta te dará puntos y monedas que podrás usar en la Tienda Eco y en tu Jardín virtual.
             </p>
         </div>
     `;
 
     Object.keys(triviaData).forEach(function(categoryId) {
         const category = triviaData[categoryId];
+        const coins = DIFFICULTY_COINS[categoryId] || 1;
 
         const card = document.createElement("article");
         card.className = "category-card card";
@@ -470,7 +477,7 @@ function renderCategories() {
                 <h2>${category.name}</h2>
                 <p>${category.description}</p>
                 <span class="${category.className}">
-                    +${category.points} pts por respuesta correcta
+                    +${category.points} pts · +${coins} <i class="fa-solid fa-coins"></i> por respuesta correcta
                 </span>
 
                 <div class="enter-label">
@@ -490,9 +497,10 @@ function renderCategories() {
 
 function renderGroups(categoryId) {
     const category = triviaData[categoryId];
+    const coins = DIFFICULTY_COINS[categoryId] || 1;
 
     selectedCategoryLabel.textContent =
-        category.name + " · +" + category.points + " pts por pregunta";
+        category.name + " · +" + category.points + " pts · +" + coins + " monedas por pregunta";
 
     groupList.innerHTML = "";
 
@@ -598,6 +606,7 @@ function renderQuestion() {
 
     const category = triviaData[selectedCategory];
     const questions = category.groups[selectedGroup];
+    const coins = DIFFICULTY_COINS[selectedCategory] || 1;
 
     if (currentIndex >= questions.length) {
         finishTrivia();
@@ -617,7 +626,7 @@ function renderQuestion() {
         "Pregunta " + (currentIndex + 1) + " de " + questions.length;
 
     questionPoints.textContent =
-        "+" + category.points + " pts";
+        "+" + category.points + " pts · +" + coins + " monedas";
 
     difficultyLabel.textContent =
         category.name + " · Grupo " + selectedGroup;
@@ -675,9 +684,12 @@ function selectAnswer(selectedIndex, selectedButton) {
         selectedButton.classList.add("correct");
         selectedButton.querySelector("i").className = "fa-solid fa-check";
 
+        const coins = DIFFICULTY_COINS[selectedCategory] || 1;
+
         score += category.points;
 
         user.puntos = (user.puntos || 0) + category.points;
+        user.monedas = (user.monedas || 0) + coins;
         user.nivel = calculateLevel(user.puntos || 0);
 
         updateUser(user);

@@ -13,6 +13,12 @@ const tabContents = document.querySelectorAll(".tab-content");
 const INVENTORY_KEY = "ecoRetosInventory";
 const COMPLETED_KEY = "ecoRetosCompletedChallenges";
 
+const DIFFICULTY_COINS = {
+    facil: 1,
+    medio: 2,
+    dificil: 3
+};
+
 const materials = [
     {
         id: "botella",
@@ -302,6 +308,7 @@ function renderChallenges() {
     challenges.forEach(function(challenge) {
         const isCompleted = completed.includes(challenge.id);
         const canBuild = hasRequiredMaterials(challenge, inventory);
+        const coinReward = DIFFICULTY_COINS[challenge.difficulty] || 1;
 
         const card = document.createElement("article");
         card.className = "challenge-card";
@@ -353,7 +360,7 @@ function renderChallenges() {
                 </span>
 
                 <span class="points">
-                    +${challenge.reward} pts
+                    +${challenge.reward} pts · +${coinReward} <i class="fa-solid fa-coins"></i>
                 </span>
             </div>
 
@@ -542,8 +549,11 @@ function completeChallenge(challengeId) {
 
     completed.push(challenge.id);
 
+    const coinReward = DIFFICULTY_COINS[challenge.difficulty] || 1;
+
     user.puntos = (user.puntos || 0) + challenge.reward;
     user.retos = (user.retos || 0) + 1;
+    user.monedas = (user.monedas || 0) + coinReward;
     user.nivel = calculateLevel(user.puntos || 0);
 
     saveInventory(inventory);
@@ -552,7 +562,7 @@ function completeChallenge(challengeId) {
 
     renderAll();
 
-    alert("¡Reto completado! Ganaste " + challenge.reward + " puntos.");
+    alert("¡Reto completado! Ganaste " + challenge.reward + " puntos y " + coinReward + " moneda(s) para el jardín.");
 }
 
 function renderAll() {
