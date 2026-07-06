@@ -12,6 +12,7 @@ const tabContents = document.querySelectorAll(".tab-content");
 
 const INVENTORY_KEY = "ecoRetosInventory";
 const COMPLETED_KEY = "ecoRetosCompletedChallenges";
+const CHALLENGES_PATH = "../../assets/images/challenges/";
 
 const DIFFICULTY_COINS = {
     facil: 1,
@@ -111,7 +112,7 @@ const challenges = [
         id: "carrito-botella",
         name: "Carrito con botella plástica",
         description: "Construye un carrito ecológico usando una botella como base y tapas como ruedas.",
-        icon: "fa-car-side",
+        image: CHALLENGES_PATH + "Carrito_ecologico_con_botella.jpeg",
         difficulty: "medio",
         reward: 120,
         requirements: {
@@ -125,7 +126,7 @@ const challenges = [
         id: "maceta-reciclada",
         name: "Maceta reciclada",
         description: "Crea una maceta reutilizando una botella plástica y siembra una planta pequeña.",
-        icon: "fa-seedling",
+        image: CHALLENGES_PATH + "Maceta_de_botella_reciclada.jpeg",
         difficulty: "facil",
         reward: 100,
         requirements: {
@@ -138,7 +139,7 @@ const challenges = [
         id: "portalapices",
         name: "Portalápices ecológico",
         description: "Construye un portalápices decorativo reutilizando material reciclable.",
-        icon: "fa-pen",
+        image: CHALLENGES_PATH + "Portalápices_con_botella_reciclada.jpeg",
         difficulty: "facil",
         reward: 90,
         requirements: {
@@ -151,7 +152,7 @@ const challenges = [
         id: "organizador",
         name: "Organizador de escritorio",
         description: "Crea un organizador para útiles escolares usando cartón reciclado.",
-        icon: "fa-boxes-stacked",
+        image: CHALLENGES_PATH + "Organizador_de_escritorio_carton.jpeg",
         difficulty: "medio",
         reward: 140,
         requirements: {
@@ -164,7 +165,7 @@ const challenges = [
         id: "comedero-aves",
         name: "Comedero para aves",
         description: "Diseña un comedero colgante para aves usando una botella plástica.",
-        icon: "fa-dove",
+        image: CHALLENGES_PATH + "comedor_aves.jpeg",
         difficulty: "medio",
         reward: 160,
         requirements: {
@@ -177,7 +178,7 @@ const challenges = [
         id: "molino-viento",
         name: "Molino decorativo",
         description: "Arma un molino decorativo reutilizando CD viejo, palitos y pintura.",
-        icon: "fa-fan",
+        image: CHALLENGES_PATH + "Molino_decorativo.jpeg",
         difficulty: "dificil",
         reward: 180,
         requirements: {
@@ -191,7 +192,7 @@ const challenges = [
         id: "casa-plantas",
         name: "Casa para plantas",
         description: "Convierte una caja Tetra Pak en una pequeña casa/maceta para plantas.",
-        icon: "fa-house-chimney",
+        image: CHALLENGES_PATH + "Casa_para_plantas.jpeg",
         difficulty: "dificil",
         reward: 200,
         requirements: {
@@ -344,7 +345,7 @@ function renderChallenges() {
             <div class="challenge-top">
 
                 <div class="challenge-icon">
-                    <i class="fa-solid ${challenge.icon}"></i>
+                    <img src="${challenge.image}" alt="${challenge.name}">
                 </div>
 
                 <div class="challenge-info">
