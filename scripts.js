@@ -23,40 +23,41 @@ const logoutBtn = document.getElementById("logoutBtn");
 
 const GARDEN_SLOTS_KEY = "ecoRetosGardenPlants";
 const SLOTS_PER_LEVEL = 3;
+const PLANTS_PATH = "./assets/images/plants/";
 
 const plantCatalog = [
     {
         id: "suculenta",
         name: "Suculenta",
-        icon: "fa-seedling",
+        image: PLANTS_PATH + "Suculenta.jpeg",
         price: 1,
         description: "Planta pequeña y resistente, ideal para empezar tu jardín."
     },
     {
         id: "flor",
         name: "Flor eco",
-        icon: "fa-spa",
+        image: PLANTS_PATH + "Flor_Eco.png",
         price: 1,
         description: "Le da color a tu jardín virtual."
     },
     {
         id: "helecho",
         name: "Helecho",
-        icon: "fa-pagelines",
+        image: PLANTS_PATH + "helecho.jpeg",
         price: 2,
         description: "Planta frondosa que refleja un jardín saludable."
     },
     {
         id: "arbusto",
         name: "Arbusto",
-        icon: "fa-leaf",
+        image: PLANTS_PATH + "arbusto.jpeg",
         price: 2,
         description: "Aporta más volumen y vida a tu espacio verde."
     },
     {
         id: "arbol",
         name: "Árbol pequeño",
-        icon: "fa-tree",
+        image: PLANTS_PATH + "arbol_pequeno.png",
         price: 3,
         description: "La planta más valiosa de tu colección ecológica."
     }
@@ -150,7 +151,7 @@ function renderSlots() {
 
             slot.className = "garden-slot filled";
             slot.innerHTML = `
-                <i class="fa-solid ${plant ? plant.icon : "fa-seedling"}"></i>
+                <img src="${plant ? plant.image : ""}" alt="${plant ? plant.name : "Planta"}">
                 <span>${plant ? plant.name : "Planta"}</span>
                 <button class="remove-plant-btn" data-index="${i}" type="button">
                     <i class="fa-solid fa-xmark"></i>
@@ -200,7 +201,7 @@ function renderShop() {
 
         card.innerHTML = `
             <div class="plant-shop-icon">
-                <i class="fa-solid ${plant.icon}"></i>
+                <img src="${plant.image}" alt="${plant.name}">
             </div>
 
             <div class="plant-shop-info">
