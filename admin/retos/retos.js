@@ -13,6 +13,7 @@ const tabContents = document.querySelectorAll(".tab-content");
 const INVENTORY_KEY = "ecoRetosInventory";
 const COMPLETED_KEY = "ecoRetosCompletedChallenges";
 const CHALLENGES_PATH = "../../assets/images/challenges/";
+const MATERIALS_PATH = "../../assets/images/materials/";
 
 const DIFFICULTY_COINS = {
     facil: 1,
@@ -25,6 +26,7 @@ const materials = [
         id: "botella",
         name: "Botella plástica",
         icon: "fa-bottle-water",
+        image: MATERIALS_PATH + "Botella_plastica.jpeg",
         price: 40,
         description: "Base para construir macetas, carritos y comederos."
     },
@@ -32,6 +34,7 @@ const materials = [
         id: "tapa",
         name: "Tapa plástica",
         icon: "fa-circle",
+        image: MATERIALS_PATH + "tapa_reciclado.jpeg",
         price: 10,
         description: "Sirve como rueda o pieza decorativa."
     },
@@ -39,6 +42,7 @@ const materials = [
         id: "carton",
         name: "Cartón reciclado",
         icon: "fa-box",
+        image: MATERIALS_PATH + "carton_reciclado.jpeg",
         price: 25,
         description: "Material útil para organizadores y estructuras."
     },
@@ -46,6 +50,7 @@ const materials = [
         id: "periodico",
         name: "Papel periódico",
         icon: "fa-newspaper",
+        image: MATERIALS_PATH + "periodico_reciclado.jpeg",
         price: 15,
         description: "Sirve para decorar, reforzar o cubrir superficies."
     },
@@ -53,6 +58,7 @@ const materials = [
         id: "palito",
         name: "Palito de madera",
         icon: "fa-grip-lines",
+        image: MATERIALS_PATH + "Palitos_de_madera.jpeg",
         price: 20,
         description: "Funciona como eje, soporte o estructura."
     },
@@ -60,6 +66,7 @@ const materials = [
         id: "tetrapak",
         name: "Caja Tetra Pak",
         icon: "fa-box-open",
+        image: MATERIALS_PATH + "tetra_prik.jpeg",
         price: 35,
         description: "Ideal para crear casas, macetas y contenedores."
     },
@@ -67,6 +74,7 @@ const materials = [
         id: "cuerda",
         name: "Cuerda o hilo",
         icon: "fa-link",
+        image: MATERIALS_PATH + "cuerda.jpeg",
         price: 15,
         description: "Sirve para colgar, sujetar y amarrar piezas."
     },
@@ -74,6 +82,7 @@ const materials = [
         id: "cinta",
         name: "Cinta adhesiva",
         icon: "fa-tape",
+        image: MATERIALS_PATH + "cinta_adhesiva.jpeg",
         price: 20,
         description: "Permite unir materiales durante la construcción."
     },
@@ -81,6 +90,7 @@ const materials = [
         id: "pintura",
         name: "Pintura ecológica",
         icon: "fa-palette",
+        image: MATERIALS_PATH + "pintura.jpeg",
         price: 30,
         description: "Sirve para decorar los proyectos ecológicos."
     },
@@ -88,6 +98,7 @@ const materials = [
         id: "cd",
         name: "CD/DVD viejo",
         icon: "fa-compact-disc",
+        image: MATERIALS_PATH + "disco.jpeg",
         price: 30,
         description: "Material decorativo para proyectos creativos."
     },
@@ -95,6 +106,7 @@ const materials = [
         id: "semillas",
         name: "Semillas",
         icon: "fa-seedling",
+        image: MATERIALS_PATH + "semillas.jpeg",
         price: 25,
         description: "Necesarias para retos de cultivo y plantas."
     },
@@ -102,6 +114,7 @@ const materials = [
         id: "tierra",
         name: "Tierra abonada",
         icon: "fa-mound",
+        image: MATERIALS_PATH + "tierra.jpeg",
         price: 35,
         description: "Base para macetas y proyectos de siembra."
     }
@@ -289,6 +302,12 @@ function getMaterialIcon(materialId) {
     return material ? material.icon : "fa-box";
 }
 
+function getMaterialById(materialId) {
+    return materials.find(function(item) {
+        return item.id === materialId;
+    });
+}
+
 function hasRequiredMaterials(challenge, inventory) {
     return Object.keys(challenge.requirements).every(function(materialId) {
         return (inventory[materialId] || 0) >= challenge.requirements[materialId];
@@ -404,7 +423,7 @@ function renderShop() {
             <div class="shop-top">
 
                 <div class="shop-icon">
-                    <i class="fa-solid ${material.icon}"></i>
+                    <img src="${material.image}" alt="${material.name}">
                 </div>
 
                 <div class="shop-info">
@@ -470,7 +489,7 @@ function renderInventory() {
             <div class="inventory-top">
 
                 <div class="inventory-icon">
-                    <i class="fa-solid ${material.icon}"></i>
+                    <img src="${material.image}" alt="${material.name}">
                 </div>
 
                 <div class="inventory-info">
